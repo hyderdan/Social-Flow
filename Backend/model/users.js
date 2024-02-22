@@ -12,7 +12,7 @@ const userschema=new mongoose.Schema({
     confirmPassword:String,
     status:String,
 })
-const User=userschema.model('user',userschema);
+const User= mongoose.model('user',userschema);
 module.exports={
     User
 }
