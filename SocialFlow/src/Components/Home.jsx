@@ -1,6 +1,5 @@
 import "./styles/Home.css";
-import "./styles/Hnavbar.css";
-import { Grid, GridItem } from '@chakra-ui/react'
+
 import { useContext } from "react";
 import { useState } from "react";
 import mycontext from "../Context.js/context";

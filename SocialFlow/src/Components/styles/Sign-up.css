@@ -1,0 +1,119 @@
+.signup{
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    /* background-color: rgb(211, 204, 204); */
+    /* background-color: black; */
+}
+.signup-form{
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    margin-top:50px;
+    background-color: white;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.35);
+
+  
+}
+.form-sub{
+    position: relative;
+    margin-top: 80px;
+    margin-left: 60px;
+    /* background-color: red; */
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    transition: all 0.5s ease;
+    
+    
+}
+
+
+.form-sub p{
+    /* display: none; */
+    position: relative;
+    width: 100%;
+    margin-left: 40px;
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 12px;
+ 
+      color: rgb(60, 56, 56);
+}
+::placeholder{
+    font-size: 12px;
+}
+.signup-form h3{
+    
+    position: relative;
+    float: left;
+    margin-left: 90px;
+    margin-top: 20px;
+    font-size: 20px;
+    transition: all 0.4s ease;
+
+}
+.form-sub input{
+    /* position: relative; */
+    float: left;
+    width: 300px;
+    height: 30px;
+    margin-top: 0px;
+    border-radius: 10px;
+    margin-right: 100px;
+    background-color: aliceblue;
+    color: black;
+    
+    
+}
+.form-sub button{
+    position: relative;
+    float: left;
+   margin-left: 30px;
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(80, 80, 190);
+    color: white;
+    font-size: 13px;
+    transition: 0.4s;
+}
+.signup-form button:active{
+    background-color: rgb(131, 131, 200);
+}
+.signup-form img{
+    
+    float: right;
+    height: 600px;
+    background-color: red;
+    
+}
+
+
+@media(width<=1000px){
+    .signup-form img{
+          width: 350px;
+    } 
+   
+  
+}
+
+@media(width<=860px){
+    .signup-form img{
+        width: 200px;
+    } 
+   
+   
+    
+}
+@media(width<=715px){
+    .signup-form img{
+        display: none;
+    }
+    
+   
+}
