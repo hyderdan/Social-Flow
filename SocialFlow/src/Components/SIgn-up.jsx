@@ -51,9 +51,12 @@
             // If the user data is valid, add the user to the users array 
             try{
              const responce= await axios.post('http://localhost:5000/users',{userName,emAil,numbEr,date,pass,confirmPass},
-              (req, res) => console.log(req.body));
+              );
               // fectdata();  
-              if (responce.status === 202) {
+              if(responce.data.emailexist === "User already exists"){
+                alert("email already exist")
+            }
+             else if (responce.status === 202) {
                 alert('Registration successful');
                 setUserName("");
            setemAil("");
@@ -62,12 +65,8 @@
             setpass("");
             setconfirmPass("");
             }
-            else if(responce.status==400){
-                alert("email already exist")
-            }
-             else {
-                alert('Registration failed');
-             }
+            
+            
            
         } catch (err) {
             console.log(err);
