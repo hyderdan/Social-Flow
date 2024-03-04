@@ -8,6 +8,8 @@ userrouter.use(bodyParser.json());
 userrouter.use(bodyParser.urlencoded({extended:true}));
 userrouter.use(cookieParser());
 userrouter.post("/",userControllers.Addusers);
+userrouter.post("/login",userControllers.loginuser);
+
 
 module.exports={
     userrouter

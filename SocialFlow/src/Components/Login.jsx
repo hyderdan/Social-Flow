@@ -1,11 +1,15 @@
 import { useEffect } from "react"
 import { useRef } from "react";
+import { useState } from "react";
 import "./styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const slideref = useRef([]);
+  const[emAil,SetemAil]=useState("");
+  const[pass,Setpass]=useState("");
   const Navigate = useNavigate();
   useEffect(() => {
     handleHover();
@@ -31,8 +35,30 @@ export default function Login() {
       slide.removeEventListener('mouseleave', handleHover); // Remove the event handler function
     });
   };
-  const handlelogin = () => {
-    Navigate("/home")
+  const handlelogin = async() => {
+    try{
+      const responce= await axios.post("http://localhost:5000/users/login",{emAil,pass});
+      console.log(responce.data);
+      if(responce.status==200){
+        if(data.message==="this acoount is Banned"){
+          alert(data.message);
+        }
+      else{
+      console.log("token in frontEnd", data.token);
+      console.log("Login successful", data.message);
+      settoken(data.token);
+      sessionStorage.setItem('usertoken', data.token);
+      sessionStorage.setItem('userid', data.UserID);
+     alert("login success");
+      Nav("/");
+    }
+    }
+    }
+    catch(err){
+        console.log(err);
+
+    }
+
   }
   return (
     <div className="flex-container">
@@ -60,9 +86,9 @@ export default function Login() {
 
           <div className="contact-form">
             <p>Email</p>
-            <input className="emailinput" type="text" name="email" />
+            <input value={emAil} onChange={(e)=>SetemAil(e.target.value)} className="emailinput" type="text" name="email" />
             <p>password </p>
-            <input className="passinput" type="text" name="password" ></input>
+            <input value={pass} onChange={(e)=>Setpass(e.target.value)} className="passinput" type="text" name="password" ></input>
             <button className="inputbutton" onClick={() => handlelogin()}>Login</button>
 
             <h5>Don't have an account?<Link className="link" to={"/signup"}>Sign Up</Link></h5>
