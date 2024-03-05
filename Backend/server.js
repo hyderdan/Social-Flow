@@ -5,7 +5,8 @@ const {connect}=require("./config");
 const {userrouter}=require("./routes/userroute")
 const app=express();
 const PORT=5000;
-connect()
+connect();
+require("dotenv").config();
 app.use(bodyparser.json());
 app.use(cors(
     {

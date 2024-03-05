@@ -92,6 +92,11 @@
     background-color: red;
     
 }
+.form-sub checkbox{
+position: absolute;
+margin-left: -120px;
+width: 100px;
+}
 
 
 @media(width<=1000px){
