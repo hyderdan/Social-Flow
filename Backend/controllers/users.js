@@ -2,6 +2,7 @@ const {User}=require("../model/users");
 const cookieParser = require("cookie-parser");
 const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
+const LOGIN_SECRET="f1u2rr";
 
 const Addusers = async (req, res) => {
   try {
@@ -39,11 +40,15 @@ const Addusers = async (req, res) => {
             const{emAil,pass}=req.body;
             const user = await User.findOne({ email:emAil });
             console.log(user);
-            // if(user.status=="ban"){
-            //      return res.status(200).json({message:"this acoount is Banned"});
-            // }
+            if(user.status=="ban"){
+                 return res.status(200).json({message:"this acoount is Banned"});
+            }
+            else{
+
+            
+            console.log(process.env.LOGIN_SECRET);
             if (user && (await bcrypt.compare(pass, user.password))){
-                const token = jwt.sign({ email: user.email }, process.env.LOGIN_SECRET, {
+                const token = jwt.sign({ email: user.email }, process.env.LOGIN_SECRET,{
                     expiresIn: "1hr"
                   });
             
@@ -59,7 +64,7 @@ const Addusers = async (req, res) => {
                   res.status(401).send("Invalid email or password");
                 }
             
-        
+            }
         }catch(err){
             console.log(err)
         }

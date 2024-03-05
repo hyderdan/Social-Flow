@@ -39,18 +39,21 @@ export default function Login() {
     try{
       const responce= await axios.post("http://localhost:5000/users/login",{emAil,pass});
       console.log(responce.data);
+      const data=responce.data;
       if(responce.status==200){
         if(data.message==="this acoount is Banned"){
           alert(data.message);
         }
       else{
+        
       console.log("token in frontEnd", data.token);
       console.log("Login successful", data.message);
-      settoken(data.token);
       sessionStorage.setItem('usertoken', data.token);
       sessionStorage.setItem('userid', data.UserID);
      alert("login success");
-      Nav("/");
+     Navigate("/home");
+     SetemAil("");
+     Setpass("");
     }
     }
     }
