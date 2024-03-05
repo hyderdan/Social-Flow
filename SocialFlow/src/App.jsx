@@ -8,6 +8,8 @@ import mycontext from './Context.js/context';// import { extendTheme } from "@ch
 import Postimageandvideos from './Components/Postimageandvideos';
 import Login from './Components/Login';
 import Signup from './Components/SIgn-up';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [profile,setprofile]=useState(datas);
@@ -30,7 +32,7 @@ function App() {
         </Routes>
         </mycontext.Provider>
         </BrowserRouter>
-        
+        <ToastContainer />
       </div>
      
   )

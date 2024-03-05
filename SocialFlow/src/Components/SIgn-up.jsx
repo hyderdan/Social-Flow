@@ -3,6 +3,8 @@
     import { useNavigate } from "react-router-dom";
     import signupImage from "./image/sign-up.png";
     import axios from "axios";
+    import { toast } from "react-toastify";
+
 
     const Signup=()=>{
         const [userName,setUserName]=useState("");
@@ -54,11 +56,16 @@
               );
               // fectdata();  
               if(responce.data.emailexist === "User already exists"){
-                alert("email already exist")
+                toast.success("email already exist",{
+                  position: "top-center",
+                });
             }
              else if (responce.status === 202) {
-                alert('Registration successful');
-                setUserName("");
+              toast.success(responce.data.message,{
+                position: "top-center",
+              }); 
+              Navigate("/") 
+          setUserName("");
            setemAil("");
            setnumbEr(0);
            setdate(null)

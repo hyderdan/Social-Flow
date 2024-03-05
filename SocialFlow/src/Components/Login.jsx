@@ -5,7 +5,7 @@ import "./styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 export default function Login() {
   const slideref = useRef([]);
   const[emAil,SetemAil]=useState("");
@@ -50,7 +50,10 @@ export default function Login() {
       console.log("Login successful", data.message);
       sessionStorage.setItem('usertoken', data.token);
       sessionStorage.setItem('userid', data.UserID);
-     alert("login success");
+      toast.success("welcome user",{
+        position: "top-center",
+        autoClose: 2000,
+      }); 
      Navigate("/home");
      SetemAil("");
      Setpass("");
