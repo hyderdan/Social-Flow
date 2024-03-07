@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 export default function Login() {
   const slideref = useRef([]);
+  const [bug,setbug]=useState([])
   const[emAil,SetemAil]=useState("");
   const[pass,Setpass]=useState("");
   const Navigate = useNavigate();
@@ -36,14 +37,31 @@ export default function Login() {
     });
   };
   const handlelogin = async() => {
+   const handleerror={}  
     try{
       const responce= await axios.post("http://localhost:5000/users/login",{emAil,pass});
       console.log(responce.data);
       const data=responce.data;
       if(responce.status==200){
-        if(data.message==="this acoount is Banned"){
+        if(data.message=="user doesn't exist"){
+          toast.error(data.message,{
+            position: "top-center",
+            autoClose: 1000,
+            theme:"dark"
+          }); 
+        }
+      else  if(data.message==="this acoount is Banned"){
           alert(data.message);
         }
+        else if(data.message=="Invalid password"){
+            
+          toast.error(data.message,{
+            position: "top-center",
+            autoClose: 2000,
+            theme:"dark"
+          }); 
+        }
+       
       else{
         
       console.log("token in frontEnd", data.token);
@@ -93,8 +111,8 @@ export default function Login() {
           <div className="contact-form">
             <p>Email</p>
             <input value={emAil} onChange={(e)=>SetemAil(e.target.value)} className="emailinput" type="text" name="email" />
-            <p>password </p>
-            <input value={pass} onChange={(e)=>Setpass(e.target.value)} className="passinput" type="text" name="password" ></input>
+            <p>password</p>
+            <input value={pass} onChange={(e)=>Setpass(e.target.value)} className="passinput" type="password" name="password" ></input>
             <button className="inputbutton" onClick={() => handlelogin()}>Login</button>
 
             <h5>Don't have an account?<Link className="link" to={"/signup"}>Sign Up</Link></h5>

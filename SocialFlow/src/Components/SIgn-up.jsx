@@ -9,7 +9,7 @@
     const Signup=()=>{
         const [userName,setUserName]=useState("");
         const [emAil,setemAil]=useState("")
-        const [numbEr,setnumbEr]=useState(0)
+        const [numbEr,setnumbEr]=useState(Number)
         const [pass,setpass]=useState("")
         const [confirmPass,setconfirmPass]=useState("")
         const [date,setdate]=useState(null)
@@ -32,21 +32,22 @@
                 handleerror.useremail='This Field is Required'
               }
               else if(!emailcheck.test(emAil)){
-                handleerror.useremail="invalid email"
+                handleerror.useremail2="invalid email"
               }
               if(!numbEr){
                 handleerror.number="This Field is required"
               }  
-              else if(numbEr<10){
-                handleerror.number="Invalid Number"
+              else if(numbEr.length<10){
+                handleerror.number2="Invalid Number"
+                console.log(handleerror.number2);
               }
               if(!pass){
                 handleerror.userpass='This field is Required'
-              }else if(pass<6){
-                handleerror.userpass='min 6 char'
+              }else if(pass.length<6){
+                handleerror.userpass2='min 6 char'
               }
-              if(!confirmPass){
-                handleerror.confirmpassword='This Field is Required'
+              if(confirmPass!==pass){
+                handleerror.confirmpassword='password does not match'
               } 
               setbug(handleerror)
             if(Object.keys(handleerror).length===0){    
@@ -67,7 +68,7 @@
               Navigate("/") 
           setUserName("");
            setemAil("");
-           setnumbEr(0);
+           setnumbEr(null);
            setdate(null)
             setpass("");
             setconfirmPass("");
@@ -88,18 +89,18 @@
                 <h3>Create Your Account</h3>
                 <img src={signupImage} alt="" />
                 <div className="form-sub">
-            <p>username</p>
+            <p>username <span style={{color:"red"}}>{!userName &&bug.userid}</span> </p>
             <input value={userName} onChange={(e)=>setUserName(e.target.value)} type="text" name="username" placeholder="username" required /><br />
-            <p>email</p>
+            <p>email <span style={{color:"red"}}>{!emAil&& bug.useremail}{!emailcheck.test(emAil)&&bug.useremail2}</span></p>
             <input value={emAil} onChange={(e)=>setemAil(e.target.value)} type="text" name="email" placeholder="email" required /><br />
-            <p>number</p>
+            <p>Mobile No. <span style={{color:"red"}}>{!numbEr&&bug.number}{numbEr.length<10&&bug.number2}</span> </p>
             <input value={numbEr} onChange={(e)=>setnumbEr(e.target.value)} type="number" name="phone"  required/><br />
             <p>Date of Birth</p>
             <input value={date} onChange={(e)=>setdate(e.target.value)} className="date" type="date"  /><br />
-            <p>Password</p>
-            <input value={pass} onChange={(e)=>setpass(e.target.value)} type="text" placeholder="password"  required/><br />
-            <p>Confirm Password</p>
-            <input value={confirmPass} onChange={(e)=>setconfirmPass(e.target.value)} type="text" placeholder="confirm password"  required/><br />
+            <p>Password <span style={{color:"red"}}>{!pass&&bug.userpass}{pass.length<6&&bug.userpass2}</span> </p>
+            <input value={pass} onChange={(e)=>setpass(e.target.value)} type="password" placeholder="password"  required/><br />
+            <p>Confirm Password <span style={{color:"red"}}> {confirmPass!==pass &&bug.confirmpassword}</span></p>
+            <input value={confirmPass} onChange={(e)=>setconfirmPass(e.target.value)} type="password" placeholder="confirm password"  required/><br />
             <button onClick={()=>handleSubmit()}>Sign-up</button>
             </div>
             </div>
