@@ -19,7 +19,7 @@ body{
     background-color: #0d0c22;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 .notch-list ul{
     padding-top: 5px;
