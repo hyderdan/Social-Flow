@@ -1,235 +1,49 @@
-
-
-.homescreen{
-    background-color: red;
-    display: grid;
-    place-items: center;
+body{
+    overflow-x: hidden;
+    background-color: #ffff;
 }
-.followers{
+.homescreen{
+    /* background-color: red; */
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;   
+}
+
+.notch-list{
     position: absolute;
-    width: 200px;
-    height: 300px;
-    background-color: #1a2020;
-    border-radius: 8px;
-    margin-left: -1000px;
-    margin-top: 380px;
+    width: auto;
+    height: auto;
+    background-color: #0d0c22;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.notch-list ul{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+    height: auto;
+    border-radius: 25px;
+}
+ .notch-list li{
+   
+    border-radius: 25px;
+    transition: 0.4s;
+    font-size: 13px;
+    font-weight: 600;
+} 
+.notch-list li:hover{
+    background-color: rgb(232, 232, 83);
+    color: black;
     
 }
-.followers h1{
-color: white;
-margin-left: 10px;
-font-family: Sans-serif;
-font-size: 15px;
-}
-.groups{
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: #1a2020;
-    border-radius: 8px;
-    margin-left: -1000px;
-    margin-top: 980px;
-}
-.groups h1{
-    color: white;
-    margin-left: 10px;
-font-family: Sans-serif;
-font-size: 15px;
+@media(width<640px){
+    .notch-list{
+        width: 100%;
     }
-    .frequest{
-        position: absolute;
-        width: 200px;
-        height: 100px;
-        background-color: #1a2020;
-        border-radius: 8px;
-        margin-left: 1000px;
-        margin-top: 400px;
-    }  
-    .frequest h5{
-        color: white;
-        margin-left: 10px;
-        font-size: 15px;
-        margin-top: 10px;
-        font-family: Sans-serif;
-        }   
-     .showmore{
-        position: absolute;
-        width: 200px;
-        height: 50px;
-        background-color: #1a2020;
-        border-radius: 8px;
-        margin-left: 1000px;
-        margin-top: 580px;
-        border: none;
-        transition: 0.5s;
-     }
-     .showmore:hover{
-        background-color: rgb(123, 130, 128);
-     } 
-     .SS{
-        color: white;
-       
-        margin-top: 15px;
-        font-size: 17px;
-        transition: 0.5s;
-        font-family: Sans-serif;
-        }  
-     .showmore:hover .SS{
-        color:  skyblue;
-     }   
-     .setting{
-        position: absolute;
-        width: 200px;
-        height: 250px;
-        background-color: #1a2020;
-        border-radius: 8px;
-        margin-left: 1000px;
-        margin-top: 980px;
-     }  
-     .setting h5{
-        color: white;
-        margin-left: 10px;
-        font-size: 15px;
-        margin-top: 10px;
-        font-family: Sans-serif;
-     } 
-@media screen and (max-width: 1190px) {
-    .followers{
-        display: none;
-    }
-    .groups{
-        display: none;
-    }
-    .frequest{
-        display: none;
-    }
-    .showmore{
-        display: none;
-    }
-}
-.search{
-    position: absolute;
-    background-color: #1a2020;
-    border-radius: 10px;
-    margin-left: -415px;
-    margin-top: 120px;
-    width: 120px;
-    height: 40px;
-}
-.searchinput{
-    margin-left: -0px;
-    border-radius: 10px;
-    width: 158px;
-    height: 50px;
-    background-color: #1a2020;
-    color: white;
-    border: none;
-    font-size: 25px;
-}
-.searchicon{
-    margin-top: -42px;
-    margin-left: 120px;
-    color: antiquewhite;
-}
-::placeholder{
-    font-size: 17px;
-    padding-left: 20px;
-}
-.navsub1:hover{
-    color: skyblue
-}
-.navsub2:hover{
-    color: skyblue
-}
-.navsub3:hover{
-    color: skyblue
-}
-.navsub4:hover{
-    color: skyblue
-}
-.navsub5:hover{
-    color: skyblue
-}
-.nav2{
-    background-color: #1a2020;
-    display: flex;
-    border-radius: 10px;
-    width: 250px;
-    height: 50px;
-}
-.nav2 h1{
-    padding-left: 38px;
-    margin-top: 8px;
-    color: #676464;
-}
-
-.homediv3{
-    background-color: #1a2020;
-    border-radius: 10px;
-    margin-left: 1070px;
-    margin-top: 40px;
-    width: 250px;
-    height:150px;
-}
-.homediv4{
-    background-color: #1a2020;
-    border-radius: 10px;
-    margin-left: 1070px;
-    margin-top: 20px;
-    width: 250px;
-    height:70px;
-}
-.settings{
-    background-color: #1a2020;
-    border-radius: 10px;
-    margin-left: 1070px;
-    margin-top: 40px;
-    width: 250px;
-    height:170px;
-}
-.updates{
-    position: absolute;
-width: 830px;
-margin-top: 350px;
-margin-left: 100px;
-height: auto;
-
-}
-.updates h3{
-    color: white;
-    float: left;
-    margin-left: 100px;
-    margin-top: 50px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.updatediv{
-    background-color: #1a2020;
-    border-radius: 10px;
-    margin-left: 100px;
-    margin-top: 100px;
-    width: 250px;
-    height:50px;
-}
-.updatediv p{
-    padding-top: 12px;
-    padding-left: 30px;
-    font-size: 22px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(48, 145, 183);
-
-}
-.updatediv2{
-    background-color: #1a2020;
-    border-radius: 10px;
-    margin-left: 380px;
-    margin-top: -72px;
-    width: 250px;
-    height:50px;
-}
-.updatediv2 p{
-    padding-top: 12px;
-    padding-left: 30px;
-    font-size: 22px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:red;
 }

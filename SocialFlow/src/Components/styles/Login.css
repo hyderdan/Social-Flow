@@ -26,6 +26,7 @@ body {
   position: relative;
   font-size: 3vw;
   margin: auto;
+  margin-right: 40px;
   margin-top: 20px;
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
@@ -192,14 +193,15 @@ body {
 }
 .contact-form p{
   font-size: 15px;
-  margin-left: 30px;
+  margin-left: 0px;
+  margin-top: 20px;
   color: white;
 }
 .contact-form h5{
   font-weight: 100;
   font-size: 17px;
   margin-top: 60px;
-  margin-left: 120px;
+  margin-left: 20px;
 }
  .link{
  color: blue;
@@ -220,7 +222,7 @@ input {
   border-radius: 8px;
   border: none;
   font-size: 15px;
-  margin-left:  30px ;
+  margin-left:  0px ;
   margin-top: 60px;
   background-color: black;
   color: white;

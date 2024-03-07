@@ -40,8 +40,16 @@ const Addusers = async (req, res) => {
             const{emAil,pass}=req.body;
             const user = await User.findOne({ email:emAil });
             console.log(user);
+            if(!user){
+                res.status(200).json({message:"user doesn't exist"})
+            }
+
+
             if(user.status=="ban"){
                  return res.status(200).json({message:"this acoount is Banned"});
+            }
+            else if(!await bcrypt.compare(pass,user.password)){
+                res.status(200).json({message:"Invalid password"})
             }
             else{
 
