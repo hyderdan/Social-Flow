@@ -110,9 +110,9 @@ export default function Login() {
 
           <div className="contact-form">
             <p>Email</p>
-            <input value={emAil} onChange={(e)=>SetemAil(e.target.value)} className="emailinput" type="text" name="email" />
+            <input value={emAil} onChange={(e)=>SetemAil(e.target.value)} className="emailinput text-sm text-black" type="text" name="email" />
             <p>password</p>
-            <input value={pass} onChange={(e)=>Setpass(e.target.value)} className="passinput" type="password" name="password" ></input>
+            <input value={pass} onChange={(e)=>Setpass(e.target.value)} className="passinput text-sm text-black" type="password" name="password" ></input>
             <button className="inputbutton" onClick={() => handlelogin()}>Login</button>
 
             <h5>Don't have an account?<Link className="link" to={"/signup"}>Sign Up</Link></h5>

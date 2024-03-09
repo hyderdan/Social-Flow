@@ -90,17 +90,17 @@
                 <img src={signupImage} alt="" />
                 <div className="form-sub">
             <p>username <span style={{color:"red"}}>{!userName &&bug.userid}</span> </p>
-            <input value={userName} onChange={(e)=>setUserName(e.target.value)} type="text" name="username" placeholder="username" required /><br />
+            <input className="text-sm" value={userName} onChange={(e)=>setUserName(e.target.value)} type="text" name="username" placeholder="username" required /><br />
             <p>email <span style={{color:"red"}}>{!emAil&& bug.useremail}{!emailcheck.test(emAil)&&bug.useremail2}</span></p>
-            <input value={emAil} onChange={(e)=>setemAil(e.target.value)} type="text" name="email" placeholder="email" required /><br />
+            <input className="text-sm" value={emAil} onChange={(e)=>setemAil(e.target.value)} type="text" name="email" placeholder="email" required /><br />
             <p>Mobile No. <span style={{color:"red"}}>{!numbEr&&bug.number}{numbEr.length<10&&bug.number2}</span> </p>
-            <input value={numbEr} onChange={(e)=>setnumbEr(e.target.value)} type="number" name="phone"  required/><br />
+            <input className="text-sm" value={numbEr} onChange={(e)=>setnumbEr(e.target.value)} type="number" name="phone"  required/><br />
             <p>Date of Birth</p>
-            <input value={date} onChange={(e)=>setdate(e.target.value)} className="date" type="date"  /><br />
+            <input className="text-sm" value={date} onChange={(e)=>setdate(e.target.value)} className="date" type="date"  /><br />
             <p>Password <span style={{color:"red"}}>{!pass&&bug.userpass}{pass.length<6&&bug.userpass2}</span> </p>
-            <input value={pass} onChange={(e)=>setpass(e.target.value)} type="password" placeholder="password"  required/><br />
+            <input className="text-sm" value={pass} onChange={(e)=>setpass(e.target.value)} type="password" placeholder="password"  required/><br />
             <p>Confirm Password <span style={{color:"red"}}> {confirmPass!==pass &&bug.confirmpassword}</span></p>
-            <input value={confirmPass} onChange={(e)=>setconfirmPass(e.target.value)} type="password" placeholder="confirm password"  required/><br />
+            <input className="text-sm" value={confirmPass} onChange={(e)=>setconfirmPass(e.target.value)} type="password" placeholder="confirm password"  required/><br />
             <button onClick={()=>handleSubmit()}>Sign-up</button>
             </div>
             </div>
