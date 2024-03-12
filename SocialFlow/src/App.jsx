@@ -9,14 +9,16 @@ import Postimageandvideos from './Components/Postimageandvideos';
 import Login from './Components/Login';
 import Signup from './Components/SIgn-up';
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import Explore from './Components/Explore';
+import GetToken from './Components/storage/user-token';
 
 function App() {
   const [profile,setprofile]=useState(datas);
   const passedDatas={
     profile
   };
-  
+  const UserToken=GetToken();
 
   return (
     
@@ -25,10 +27,11 @@ function App() {
         <BrowserRouter>
         <mycontext.Provider value={passedDatas}>
         <Routes>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/post' element={<Postimageandvideos/>}  />
+          {UserToken&&<Route path='/home' element={<Home/>}/>}
+          {UserToken&&<Route path='/post' element={<Postimageandvideos/>}/>}
           <Route path='/' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>} />
+          {UserToken&&<Route path='/explore' element={<Explore/>}/>}
         </Routes>
         </mycontext.Provider>
         </BrowserRouter>
