@@ -2,6 +2,7 @@ import "./styles/Home.css";
 import "./styles/profile.css"
 import { useContext } from "react";
 import { useState } from "react";
+import axios from "axios";
 import mycontext from "../Context.js/context";
 import{FontAwesomeIcon}from "@fortawesome/react-fontawesome"
 import{faBars,faChevronDown}from "@fortawesome/free-solid-svg-icons"
@@ -10,6 +11,7 @@ import { useEffect } from "react";
 import{Parallax,ParallaxLayer}from "react-parallax"
 import Explore from "./Explore";
 import {Link,animateScroll as scroll}from "react-scroll"
+import UserId from "./storage/user-id";
 
 
 
@@ -19,16 +21,16 @@ import {Link,animateScroll as scroll}from "react-scroll"
 
 export default function Home() {
     const{profile}=useContext(mycontext);
-    
-
+    const userid=UserId();
     const [togglenav,Settogglenav]=useState(false);
     const[toggleprofile,SettoggleProfile]=useState(false);
    const [scrollPosition,setScrollPosition]=useState(0);
    const[navcolorchange,Setnavcolorchange]=useState("Home");
    const[navcolorchange2,Setnavcolorchange2]=useState(true);
+   const[userdata,SetuserData]=useState([]);
 
     
-    
+
    
    useEffect(()=>{
       if(toggleprofile==true){
@@ -64,7 +66,7 @@ export default function Home() {
 
     };
     useEffect(()=>{
-
+      SingleUser();
     const handleScroll = () => {
         const sections = document.querySelectorAll('section');
         sections.forEach((section) => {
@@ -79,16 +81,53 @@ export default function Home() {
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
-    },[])
+    },[]);
+
+    const SingleUser=async()=>{
+      try{
+          const responce= await axios.get(`http://localhost:5000/users/singleuser/${userid}`);
+          console.log(responce.data.user);
+          SetuserData(responce.data.user);
+      }
+      catch(err){
+        console.log(err)
+      }
+
+    }
 
     return (
         <div >
-           <div  className={`mt-12 sm:mt-0 ${toggleprofile==false?"profile-main":"profile-main2"}`}>
+           <div  className={` sm:mt-0 ${toggleprofile==false?"profile-main":"profile-main2"}`}>
               <div  className="cover-photo">
                 <div className="profile-photo">
                     helo
                 </div>
               </div> 
+              <div className={`user-name`}>
+              <h1 className="text-4xl mt-6">{userdata.username}</h1> 
+              </div>
+              
+              <div className={`phone`}>
+                  <h2>Phone: </h2> <h3>{userdata.PhoneNo}</h3>
+                  </div>
+               <div  className={`mail`}>
+               <h2>Mail:</h2> <h3>{userdata.email}</h3>
+                </div>
+                <div  className={`Dark-mode`}>
+               <h2 className="pt-3 pb-3 ml-6">Dark mode</h2> <h3>></h3>
+                </div> 
+                <div  className={`profile-details`}>
+               <h2 className="pt-3 pb-3 ml-6">Profile details</h2> 
+                </div> 
+                <div  className={`setting`}>
+               <h2 className="pt-3 pb-3 ml-6">Settings</h2> 
+                </div> 
+                
+                <button className="mt-3 mb-3 pt-2 pb-2 bg-blue-400">Log out</button>
+               
+
+                  
+                
             </div>
         <div className="homescreen" >
             <div className="notch-list rounded-1xl sm:mt-8 sm:rounded-3xl md:mt-8 md:rounded-3xl lg:mt-8 lg:rounded-3xl">

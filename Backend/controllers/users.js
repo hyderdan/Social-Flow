@@ -77,7 +77,23 @@ const Addusers = async (req, res) => {
             console.log(err)
         }
     }
+    const userdetails=async(req,res)=>{
+            try{
+                const {userid}=req.params;
+            const user= await User.findById(userid);
+            if(!user){
+                 res.json(404).json({error:"usernot found"});
+                    console.log("user not found");
+              }
+              console.log(user);
+              res.status(200).json({user});          
+
+
+            }catch(err){
+                console.log(err)
+            }
+    }
 
   module.exports={
-    Addusers,loginuser
+    Addusers,loginuser,userdetails
   }
