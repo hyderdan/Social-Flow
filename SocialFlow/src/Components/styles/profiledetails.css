@@ -1,0 +1,41 @@
+.profile-detail-sub{
+    width: 100%;
+    /* background-color: red; */
+    margin-top: 70px;
+    height: 100%;
+    display: block;
+}
+.profile-detail-sub button{
+    margin-top: 30px;
+    margin-left: 30px;
+    height: 40px;
+    background-color: lightblue;
+}
+.followres-list{
+    /* background-color: red; */
+    margin-top: 60px;
+}
+.followres-list ul{
+    display: flex;
+    margin-left: px;
+}
+.followres-list li{
+    padding-left: 55px;
+    font-size: clamp(10px,4vw,17px);
+
+}
+.username-bio{
+    border-color: red;
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.username-bio h1{
+    font-size: clamp(17px,4vw,25px);
+    font-weight: 600;
+}
+.username-bio p{
+    margin-top: 0px;
+    font-size: clamp(10px,4vw,15px);
+
+}

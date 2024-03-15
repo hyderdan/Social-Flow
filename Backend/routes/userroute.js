@@ -9,6 +9,7 @@ userrouter.use(bodyParser.urlencoded({extended:true}));
 userrouter.use(cookieParser());
 userrouter.post("/",userControllers.Addusers);
 userrouter.post("/login",userControllers.loginuser);
+userrouter.get("/singleuser/:userid",userControllers.userdetails);
 
 
 module.exports={

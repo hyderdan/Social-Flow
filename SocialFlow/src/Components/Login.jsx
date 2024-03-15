@@ -68,10 +68,7 @@ export default function Login() {
       console.log("Login successful", data.message);
       sessionStorage.setItem('usertoken', data.token);
       sessionStorage.setItem('userid', data.UserID);
-      toast.success("welcome user",{
-        position: "top-center",
-        autoClose: 2000,
-      }); 
+      alert("welcome user")
      Navigate("/home");
      SetemAil("");
      Setpass("");
