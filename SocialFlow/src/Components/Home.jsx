@@ -5,13 +5,13 @@ import { useState } from "react";
 import axios from "axios";
 import mycontext from "../Context.js/context";
 import{FontAwesomeIcon}from "@fortawesome/react-fontawesome"
-import{faBars,faChevronDown}from "@fortawesome/free-solid-svg-icons"
+import{faBars,faChevronDown,faMoon,faUser,faGear,faPlus}from "@fortawesome/free-solid-svg-icons"
 import homeBackground from "./image/home-page-centre-removebg-preview.png"
 import { useEffect } from "react";
-import{Parallax,ParallaxLayer}from "react-parallax"
 import Explore from "./Explore";
 import {Link,animateScroll as scroll}from "react-scroll"
 import UserId from "./storage/user-id";
+import "./styles/profiledetails.css"
 
 
 
@@ -27,6 +27,7 @@ export default function Home() {
    const [scrollPosition,setScrollPosition]=useState(0);
    const[navcolorchange,Setnavcolorchange]=useState("Home");
    const[navcolorchange2,Setnavcolorchange2]=useState(true);
+   const[Profiledetail,setProfiledetail]=useState(false);
    const[userdata,SetuserData]=useState([]);
 
     
@@ -94,6 +95,14 @@ export default function Home() {
       }
 
     }
+    const profiledetail=()=>{
+                if(Profiledetail==true){
+                  setProfiledetail(!Profiledetail);
+                }
+                else{
+                  setProfiledetail(true);
+                }
+    }
 
     return (
         <div >
@@ -103,6 +112,8 @@ export default function Home() {
                     helo
                 </div>
               </div> 
+              {!Profiledetail ?
+              <div>
               <div className={`user-name`}>
               <h1 className="text-4xl mt-6">{userdata.username}</h1> 
               </div>
@@ -114,16 +125,41 @@ export default function Home() {
                <h2>Mail:</h2> <h3>{userdata.email}</h3>
                 </div>
                 <div  className={`Dark-mode`}>
-               <h2 className="pt-3 pb-3 ml-6">Dark mode</h2> <h3>></h3>
+               <h2 className="pt-3 pb-3 ml-6"><FontAwesomeIcon className="icons" icon={faMoon} />&nbsp; &nbsp; Dark mode</h2> <h3></h3>
                 </div> 
                 <div  className={`profile-details`}>
-               <h2 className="pt-3 pb-3 ml-6">Profile details</h2> 
+               <h2 onClick={()=>profiledetail()} className="pt-3 pb-3 ml-6"><FontAwesomeIcon className="icons" icon={faUser} />&nbsp; &nbsp;Profile details</h2> 
                 </div> 
                 <div  className={`setting`}>
-               <h2 className="pt-3 pb-3 ml-6">Settings</h2> 
+               <h2 className="pt-3 pb-3 ml-6"><FontAwesomeIcon className="icons" icon={faGear} />&nbsp; &nbsp;Settings</h2> 
                 </div> 
                 
                 <button className="mt-3 mb-3 pt-2 pb-2 bg-blue-400">Log out</button>
+                </div>: <div className="profile-detail-sub">
+                  <div className="followres-list">
+                    <ul>
+                      <li>Posts</li>
+                      <li>Followers</li>
+                      <li>Following</li>
+                    </ul>
+                  </div>
+                <div className="username-bio">
+                  <h1>{userdata.username}</h1>
+                  <p>Add Bio:</p>
+                  <p>Date Of Birth:{userdata.dateofbirth}</p>
+                  <p> Phone No: +91-{userdata.PhoneNo}</p>
+
+                  <h1></h1>
+                </div>
+
+                  <div>
+                    <button  onClick={()=>profiledetail()} >close profile</button>
+                    <button  onClick={()=>profiledetail()} >edit profile</button>
+
+                  </div>
+                  </div>}
+                 
+                
                
 
                   
