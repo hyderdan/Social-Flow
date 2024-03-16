@@ -10,6 +10,7 @@ userrouter.use(cookieParser());
 userrouter.post("/",userControllers.Addusers);
 userrouter.post("/login",userControllers.loginuser);
 userrouter.get("/singleuser/:userid",userControllers.userdetails);
+userrouter.put("/update/:userid",userControllers.updateuser);
 
 
 module.exports={

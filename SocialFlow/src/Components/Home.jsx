@@ -1,5 +1,6 @@
 import "./styles/Home.css";
 import "./styles/profile.css"
+import "./styles/editprofile.css";
 import { useContext } from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -29,6 +30,14 @@ export default function Home() {
    const[navcolorchange2,Setnavcolorchange2]=useState(true);
    const[Profiledetail,setProfiledetail]=useState(false);
    const[userdata,SetuserData]=useState([]);
+   const[post,Setpost]=useState(0);
+   const[followers,Setfollowers]=useState(0);
+   const[following,Setfollowing]=useState(0);
+   const[editProfile,setEditprofile]=useState(false)
+  const[username,Setusername]=useState("");
+  const[phoneNo,SetphoneNo]=useState(Number);
+  const[Email,Setemail]=useState("");
+  const[Addbio,SetAddbio]=useState("");
 
     
 
@@ -103,7 +112,29 @@ export default function Home() {
                   setProfiledetail(true);
                 }
     }
-
+    const Editprofile=()=>{
+                if(editProfile==false){
+                  setEditprofile(!editProfile);
+                }
+                else{
+                  setEditprofile(false);
+                }
+    }
+    const savechanges=async()=>{
+        try{
+          const responce= await axios.put(`http://localhost:5000/users/update/${userid}`,{username,Email,Addbio,phoneNo});
+          console.log(responce.data);
+          alert("user Profile updated");
+          SingleUser();
+          Setusername("");
+          Setemail("");
+          SetphoneNo("");
+          SetAddbio("");
+          Editprofile()
+        }catch(err){
+            console.log(err);
+        }
+    }
     return (
         <div >
            <div  className={` sm:mt-0 ${toggleprofile==false?"profile-main":"profile-main2"}`}>
@@ -136,6 +167,14 @@ export default function Home() {
                 
                 <button className="mt-3 mb-3 pt-2 pb-2 bg-blue-400">Log out</button>
                 </div>: <div className="profile-detail-sub">
+                  {!editProfile?<div>
+                  <div className="follower-list-figure">
+                  <ul>
+                      <li>{post}</li>
+                      <li className="follow">{followers}</li>
+                      <li className="following">{following}</li>
+                    </ul>
+                  </div>
                   <div className="followres-list">
                     <ul>
                       <li>Posts</li>
@@ -145,7 +184,7 @@ export default function Home() {
                   </div>
                 <div className="username-bio">
                   <h1>{userdata.username}</h1>
-                  <p>Add Bio:</p>
+                  <p> Bio:{userdata.bio}</p>
                   <p>Date Of Birth:{userdata.dateofbirth}</p>
                   <p> Phone No: +91-{userdata.PhoneNo}</p>
 
@@ -154,9 +193,22 @@ export default function Home() {
 
                   <div>
                     <button  onClick={()=>profiledetail()} >close profile</button>
-                    <button  onClick={()=>profiledetail()} >edit profile</button>
-
+                    <button  onClick={()=>Editprofile()} >edit profile</button>
                   </div>
+                  </div>: <div className="edit-profile">
+                        <h1>Edit Profile</h1>
+                        <span>username</span>
+                        <input value={username} onChange={(e)=>Setusername(e.target.value)} type="text" placeholder="username" />
+                        <span>Phone No.</span>
+                        <input value={phoneNo} onChange={(e)=>SetphoneNo(e.target.value)} type="text" placeholder="phone No." />
+                        <span>E-mail</span>
+                        <input value={Email} onChange={(e)=>Setemail(e.target.value)} type="text" placeholder="Mail" />
+                        <span>Bio</span>
+                        <textarea onChange={(e)=>SetAddbio(e.target.value)} value={Addbio} type="text" placeholder="Add bio" />
+                        <button onClick={()=>savechanges()} className="edit-button">Save Changes</button>
+                        <button onClick={()=>Editprofile()} className="edit-button">close</button>
+
+                  </div>}
                   </div>}
                  
                 
