@@ -4,6 +4,7 @@ const userschema=new mongoose.Schema({
     profile:[
       
     ],
+    bio:String,
     username:String,
     email:String,
     PhoneNo:Number,

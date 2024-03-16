@@ -1,0 +1,46 @@
+.edit-profile{
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    margin-top: 30px;
+    height: 100%;
+}
+.edit-profile h1{
+    font-size: clamp(15px,4vw,25px);
+    font-weight: 600;
+    color: gray;
+    margin-left: 20px;
+}
+.edit-profile input{
+    /* position: absolute; */
+    margin-top: 0px;
+    background-color: aliceblue;
+    margin-left: 20px;
+}
+.edit-profile textarea{
+    margin-top: 0px;
+    background-color: aliceblue;
+    margin-left: 20px;
+    width: 350px;
+    height: 80px;
+    
+}
+
+.edit-profile span{
+    /* position: absolute; */
+    margin-top: 20px;
+    color: gray;
+    margin-left: 25px;
+}
+::placeholder{
+    padding-left: 20px;
+    font-size: clamp(10px,4vw,15px);
+}
+.edit-button{
+    
+    color: white;
+    background-color: rgb(137, 214, 239);
+    }

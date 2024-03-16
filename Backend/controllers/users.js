@@ -93,7 +93,18 @@ const Addusers = async (req, res) => {
                 console.log(err)
             }
     }
+    const updateuser=async(req,res)=>{
+        try{
+     const { userid } = req.params
+    const {username,Email,Addbio,phoneNo} = req.body
+    const user = await User.findByIdAndUpdate(userid, {username:username,email:Email, PhoneNo:phoneNo,bio:Addbio}, { new: true })
+    res.json(user)
+    console.log(user)
+        }catch(err){
+                console.log(err);
+        }
+    }
 
   module.exports={
-    Addusers,loginuser,userdetails
+    Addusers,loginuser,userdetails,updateuser
   }
