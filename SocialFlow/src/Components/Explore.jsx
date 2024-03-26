@@ -2,11 +2,20 @@ import "./styles/explore.css"
 import exlploreBackground from "./image/explore-img.png"
 import exlploreBackground3 from "./image/explore-img3.jpg"
 import exlploreBackground2 from "./image/explore-img2.png"
+import { useState } from "react"
 // import exlploreBackground5 from "./image/explore-img6.jpg"
-
-
+import { useNavigate } from "react-router-dom"
+   
 
 const Explore=()=>{
+    const Navigate = useNavigate();
+    const[loader,Setloader]=useState(true);
+    const Explorepage=()=>{
+        Setloader(!loader);
+        setTimeout(()=>{
+            Navigate("/explorepage");
+        },2000)
+    }
     return(
         <div className="explore-main">
             <div className="main-image  ">
@@ -21,7 +30,7 @@ const Explore=()=>{
                     What do you want to try next? 
                     Think of something you’re into—like 
                     “easy chicken dinner”—and see what you find.</p>
-                    <button className="bg-red-500 text-white mt-8 ml-40">Explore</button>
+                    <button onClick={()=>Explorepage()} className="bg-red-500 text-white mt-8 ml-40">{!loader?<div className="spinner"></div>:"Explore"}</button>
                     </div> 
             </div>
         </div>

@@ -15,6 +15,7 @@ app.use(cors(
         credentials:true,
     }
 ));
+app.use(express.static("profile"));
 app.listen(PORT, () => {
     console.log("server started at port", PORT)
 });

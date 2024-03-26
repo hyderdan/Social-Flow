@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
 const LOGIN_SECRET="f1u2rr";
+const fs=require("fs")
 
 const Addusers = async (req, res) => {
   try {
@@ -104,7 +105,41 @@ const Addusers = async (req, res) => {
                 console.log(err);
         }
     }
+    const profileupload=async(req,res)=>{
+        try{
+            const {userid}=req.params;
+            const user= await User.findById(userid);
+            console.log("pr",req.file);
+            if(!user){
+               res.json(404).json({error:"usernot found"});
+               console.log("user not found");
+            }
+               user.profile.push(req.file.filename);
+               await user.save();
+              res.status(200).json({message:"product added to profile"});
+        
+            
+        }catch(err){
+                console.log(err);
+        }
+    }
+    const getprofile=async(req,res)=>{
+        try{
+            const{userid}=req.params;
+            const user=await User.findById(userid);
+            if(!user){
+                console.log("cant't find user")
+                res.status(200).json({message:"user not found"})
+            }
+            else{
+                console.log(user.profile);
+                res.status(200).json({profile:user.profile})
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
 
   module.exports={
-    Addusers,loginuser,userdetails,updateuser
+    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile
   }
