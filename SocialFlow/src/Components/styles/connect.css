@@ -1,0 +1,38 @@
+.connect-main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    background-color: #ffb3cc;
+    background-image: linear-gradient(0deg, #ffb3cc 100%, #dfe7e6 0%);
+}
+.connect-sub h1{
+    font-weight: 1000;
+    color: grey;
+}
+.connect-sub p{
+    color: grey;
+    text-align: center;
+}
+.connect-sub{
+    margin-bottom: 200px;
+}
+.connect-img{
+    position: absolute;
+    overflow-y: hidden;
+    margin-top: 350px;
+    
+}
+.connect-img ul{
+    display: flex;
+   
+}
+.connect-img li{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.connect-img img{
+    height: 300px;
+    width: 400px;
+    border-radius: 3px;
+}

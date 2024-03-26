@@ -38,7 +38,7 @@
 }
 .profile-photo{
     position: absolute;
-        background-color: red;
+        background-color: rgb(215, 192, 192);
         border-radius: 50%;
         width: 150px;
         height: 150px;
@@ -47,6 +47,12 @@
         place-items: center;
         margin-top: 130px;
         
+}
+.userPic{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 .user-name{
     margin-top: 50px;

@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Explore from './Components/Explore';
 import GetToken from './Components/storage/user-token';
+import Explorepage from './Components/Explorepage';
 
 function App() {
   const [profile,setprofile]=useState(datas);
@@ -32,6 +33,8 @@ function App() {
           <Route path='/' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>} />
           {UserToken&&<Route path='/explore' element={<Explore/>}/>}
+          {UserToken&&<Route path='/explorepage' element={<Explorepage/>}/>}
+
         </Routes>
         </mycontext.Provider>
         </BrowserRouter>

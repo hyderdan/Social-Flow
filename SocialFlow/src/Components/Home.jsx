@@ -13,6 +13,7 @@ import Explore from "./Explore";
 import {Link,animateScroll as scroll}from "react-scroll"
 import UserId from "./storage/user-id";
 import "./styles/profiledetails.css"
+import Connect from "./Connect";
 
 
 
@@ -38,6 +39,8 @@ export default function Home() {
   const[phoneNo,SetphoneNo]=useState(Number);
   const[Email,Setemail]=useState("");
   const[Addbio,SetAddbio]=useState("");
+  const[uploadphoto,Setuploadphoto]=useState(null);
+  const[profilepic,Setprofilepic]=useState([])
 
     
 
@@ -92,12 +95,13 @@ export default function Home() {
         window.removeEventListener('scroll', handleScroll);
       };
     },[]);
-
+    
     const SingleUser=async()=>{
       try{
           const responce= await axios.get(`http://localhost:5000/users/singleuser/${userid}`);
           console.log(responce.data.user);
           SetuserData(responce.data.user);
+          Setprofilepic(responce.data.user.profile);
       }
       catch(err){
         console.log(err)
@@ -115,6 +119,10 @@ export default function Home() {
     const Editprofile=()=>{
                 if(editProfile==false){
                   setEditprofile(!editProfile);
+                  Setusername(userdata.username);
+                  Setemail(userdata.email);
+                  SetphoneNo(userdata.PhoneNo);
+                  SetAddbio(userdata.bio);
                 }
                 else{
                   setEditprofile(false);
@@ -124,6 +132,7 @@ export default function Home() {
         try{
           const responce= await axios.put(`http://localhost:5000/users/update/${userid}`,{username,Email,Addbio,phoneNo});
           console.log(responce.data);
+          Handleupload();
           alert("user Profile updated");
           SingleUser();
           Setusername("");
@@ -135,12 +144,41 @@ export default function Home() {
             console.log(err);
         }
     }
+
+    const handleChange=(event)=>{
+        Setuploadphoto(event.target.files[0]);
+    };
+    const Handleupload=async()=>{
+      try{
+        console.log("hellyeah",uploadphoto)
+          const formdata= new FormData();
+          formdata.append('image',uploadphoto);
+          await axios.post(`http://localhost:5000/users/uploadprofile/${userid}`,formdata,{
+        headers: {
+          'Content-Type': 'multipart/form-data',   
+        },
+      });
+      console.log('Image uploaded successfully!');
+      // SingleUser();
+      alert("profile")
+      Setuploadphoto(null)
+      }catch(err){
+        console.log("profile not uploaded",err);
+      }
+    }
+  
+    const bURL="http://localhost:5000/upload"
+    console.log(profilepic,"hello")
     return (
         <div >
            <div  className={` sm:mt-0 ${toggleprofile==false?"profile-main":"profile-main2"}`}>
               <div  className="cover-photo">
                 <div className="profile-photo">
-                    helo
+                {profilepic ?<img className='userPic'src={`${bURL}/${profilepic[0]}`} alt="img" />: <div></div>}
+                    {editProfile && <div class="file-input-container">
+         <span><FontAwesomeIcon icon={faPlus} /></span>
+           <input type="file" onChange={handleChange} id="fileInput"/>
+          </div> }
                 </div>
               </div> 
               {!Profiledetail ?
@@ -205,8 +243,7 @@ export default function Home() {
                         <input value={Email} onChange={(e)=>Setemail(e.target.value)} type="text" placeholder="Mail" />
                         <span>Bio</span>
                         <textarea onChange={(e)=>SetAddbio(e.target.value)} value={Addbio} type="text" placeholder="Add bio" />
-                        <button onClick={()=>savechanges()} className="edit-button">Save Changes</button>
-                        <button onClick={()=>Editprofile()} className="edit-button">close</button>
+                        <button onClick={()=>savechanges()} className="edit-button">Save Changes</button>                        <button onClick={()=>Editprofile()} className="edit-button">close</button>
 
                   </div>}
                   </div>}
@@ -223,10 +260,9 @@ export default function Home() {
           <FontAwesomeIcon className="text-lg " onClick={handletoggle} icon={faBars} />
         </div>
             <ul className="hidden sm:flex flex-wrap ">
-            <li className={`pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=='Home'?"list1":""}`} onClick={()=>colorchange('Home')}><Link to="Home" onClick={()=>colorchange('Home')} smooth={true} duration={500}>Home</Link></li>
-                <li className={`pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=="Explore"?"list1":""}`} onClick={()=>colorchange('Explore')}><Link  to="Explore" smooth={true} duration={500}>Explore</Link></li>
-                <li className={`pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=="profile"?"list1":""}`} onClick={()=>profiletoggle('profile')}><Link to="profile" onClick={()=>profiletoggle('profile')} smooth={true} duration={500}>profile</Link> </li>
-                <li className={`pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=="Connect"?"list1":""}`} onClick={()=>colorchange('Connect')}><Link to="Connect" smooth={true} duration={500}>Connect</Link></li>
+            <li className={`pt-2 pb-2 pl-10 pr-20 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=='Home'?"list1":""}`} onClick={()=>colorchange('Home')}><Link to="Home" onClick={()=>colorchange('Home')} smooth={true} duration={500}>Home</Link></li>
+                <li className={`pt-2 pb-2 pl-10 pr-20 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=="Explore"?"list1":""}`} onClick={()=>colorchange('Explore')}><Link  to="Explore" smooth={true} duration={500}>Explore</Link></li>
+                <li className={`pt-2 pb-2 pl-10 pr-20 w-full sm:w-1/4 md:w-1/4 list-item ${navcolorchange=="profile"?"list1":""}`} onClick={()=>profiletoggle('profile')}><Link to="profile" onClick={()=>profiletoggle('profile')} smooth={true} duration={500}>profile</Link> </li>
                 </ul>
            
             {togglenav&& 
@@ -234,13 +270,13 @@ export default function Home() {
                <li className="pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4">Home</li>
                 <li className="pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4">Explore</li>
                 <li className="pt-2 pb-2 pl-10 pr-10 w-full sm:w-1/4 md:w-1/4">profile </li>
-                <li className="pt-2 pb-2 pl-10 pr-10 w-full   sm:w-1/4 md:w-1/4">Connect</li>
+                {/* <li className="pt-2 pb-2 pl-10 pr-10 w-full   sm:w-1/4 md:w-1/4">Connect</li> */}
                 </ul>}
             </div>
            
             <section id="Home" className=" lg:mt-4  md:mt-4 home-page-heading">
                <h2 className="heading-text  text-2xl mb-10 sm:text-4xl sm:mb-0 md:text-5xl md:mb-0  lg:text-7xl lg:mb-0 ">SPREAD YOUR WORDS TO </h2> 
-               <h1 className="heading-world">WORLD</h1> 
+               <h1 className="heading-world ">WORLD</h1> 
              <Link to="Explore" smooth={true} duration={500} >  <div onClick={()=>colorchange('Explore')} className={`rounded-3xl  w-12 h-12 mb-4 explore-here `}>
                 <h1 className="text-2xl  text-white"><FontAwesomeIcon icon={faChevronDown} /></h1>
                 </div></Link>
@@ -249,7 +285,9 @@ export default function Home() {
         <section id="Explore">
                 <Explore/>  
             </section> 
-           
+        {/* <section id="Connect">
+              <Connect/>
+        </section>    */}
         </div>
       
     )
