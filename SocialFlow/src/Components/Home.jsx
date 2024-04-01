@@ -14,6 +14,7 @@ import {Link,animateScroll as scroll}from "react-scroll"
 import UserId from "./storage/user-id";
 import "./styles/profiledetails.css"
 import Connect from "./Connect";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -22,6 +23,7 @@ import Connect from "./Connect";
 
 
 export default function Home() {
+  const Navigate=useNavigate();
     const{profile}=useContext(mycontext);
     const userid=UserId();
     const [togglenav,Settogglenav]=useState(false);
@@ -166,6 +168,11 @@ export default function Home() {
         console.log("profile not uploaded",err);
       }
     }
+    const Handlelogout=()=>{
+      sessionStorage.clear('userid');
+      sessionStorage.clear('usertoken');
+      Navigate('/');
+    }
   
     const bURL="http://localhost:5000/upload"
     console.log(profilepic,"hello")
@@ -203,7 +210,7 @@ export default function Home() {
                <h2 className="pt-3 pb-3 ml-6"><FontAwesomeIcon className="icons" icon={faGear} />&nbsp; &nbsp;Settings</h2> 
                 </div> 
                 
-                <button className="mt-3 mb-3 pt-2 pb-2 bg-blue-400">Log out</button>
+                <button className="mt-3 mb-3 pt-2 pb-2 bg-blue-400" onClick={()=>Handlelogout()}>Log out</button>
                 </div>: <div className="profile-detail-sub">
                   {!editProfile?<div>
                   <div className="follower-list-figure">

@@ -12,6 +12,11 @@ const userschema=new mongoose.Schema({
     password:String,
     confirmPassword:String,
     status:String,
+    recentprofileviewed:[{
+        type:mongoose.Schema.Types.ObjectId, 
+        ref:"user",
+        required:false,
+    }]
 })
 const User= mongoose.model('user',userschema);
 module.exports={
