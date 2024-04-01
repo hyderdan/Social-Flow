@@ -139,7 +139,77 @@ const Addusers = async (req, res) => {
             console.log(err)
         }
     }
+    const userdata=async(req,res)=>{
+        try{
+            const{name}=req.params;
+            const data = await User.find({});
+            const searchdetail=data.filter((d)=>
+            d.username===name
+            );
+            res.status(200).json({searchdetail});
+            console.log(searchdetail);
+        }catch(err){
+            console.log(err);
+        }
+    }
+    const profileviewed=async(req,res)=>{
+        try{
+            const{profile_id}=req.body;
+            const{userid}=req.params;
+            console.log(userid)
+            const user=await User.findById(userid);
+            if(!user){
+                console.log("cant't find user")
+                res.status(200).json({message:"user not found"})
+            }
+            else{
+                user.recentprofileviewed.push(profile_id);
+                await user.save();
+                console.log(user)
+                res.status(200).json({message:"recentprofile added"})
+
+            }
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+    const fetchrecentdata = async (req, res) => {
+        try {
+          const user = await User.findById(req.params.userid);
+          if (!user) {
+            return res.status(404).json({ error: "User not found" });
+          }
+      
+          // Extract product IDs from the user's cart
+          const productIds = user.recentprofileviewed.map(item => item.product);
+      
+          // Query productdata collection with the product IDs
+          const productsWithQuantity = await productdata.find({
+            _id: { $in: productIds }
+          });
+      
+          // Combine product information with quantities from the user's cart
+          const products = user.cart.map(item => {
+            const product = productsWithQuantity.find(p => p._id.equals(item.product));
+            return {
+              ...item.toObject(),
+              product: product,
+              quantity: item.quantity
+            };
+          });
+          const totalquantity = user.cart.reduce((total, item) => {
+            return total + item.quantity
+          }, 0)
+      
+          // Send response with cart items and quantities
+          res.status(200).json({ products, totalquantity });
+        } catch (error) {
+          console.error("Error fetching cart quantity:", error);
+          res.status(500).json({ error: "Server error", error: error.message });
+        }
+      };
 
   module.exports={
-    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile
+    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed
   }

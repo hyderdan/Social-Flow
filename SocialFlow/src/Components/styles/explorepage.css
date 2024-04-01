@@ -7,13 +7,14 @@
 }
 .side-bar{
     position: absolute;
-    /* background-color: red; */
+        /* background-color: red; */
     height: 100%;
     width: auto;
-    
+    background-color: white;
     border-right: 1px solid #d7d5d5;
 
 }
+
 .side-img{
 margin-top: -20px;
 margin-left: 30px;
@@ -26,6 +27,15 @@ height: 200px;
     height: 100px;
     margin-top: 0px;
     margin-left: 20px;
+    
+}
+.side-img3{
+    position: absolute;
+    width: 100px;
+    height: 70px;
+    margin-top: 0px;
+    margin-left: 20px;
+    /* background-color: red; */
     
 }
 .side-bar ul{
@@ -89,6 +99,42 @@ height: 200px;
     transition: 0.4s ease;
     
 }
+.side-bar3top{
+    position: fixed;
+    /* background-color: red; */
+    height: 70px;
+    width: 100%;   
+    /* margin-top: 91vh; */
+    border-top: 1px solid #d7d5d5;
+    border-bottom: 1px solid #d7d5d5;
+
+
+}
+.side-bar3top ul{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    /* width: 200px; */
+    /* background-color: red; */
+}
+
+.side-bar3top li{
+    border-radius: 8px;
+    margin-top: 12px;
+    padding-left: 0px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    font-size: clamp(17px,4vw,20px);
+    font-weight: 500;
+    /* color: black; */
+    
+    transition: 0.4s ease;
+    
+}
 .side-bar3 li:hover{
     /* background-color: rgb(198, 228, 239); */
     color: blue;
@@ -99,27 +145,7 @@ height: 200px;
 .sidecolor2{
     color: blue;
 }
-.explore-search{
-    /* background-color: red; */
-    display: none;
-    width: 25%;
-    height: 100%;
-    margin-left: 200px;
-    border-right: 1px solid #d7d5d5;
-   flex-direction: column;
-border-top-right-radius: 30px;
-border-bottom-right-radius: 30px;
-transform: translate(-100%);
-transition: 0.4s ease-in-out;
 
-
-}
-.explore-search2{
-    /* background-color: red; */
-    transform: translate(0%);
-transition: 0.4s ease-in-out;
-
-}
 .search-sub h1{
     position: absolute;
     font-size: clamp(17px,4vw,25px);
@@ -130,20 +156,122 @@ transition: 0.4s ease-in-out;
 .search-sub input{
     margin-left: 20px;
     margin-top: 120px;
-    background-color: rgba(239, 239, 239,1);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /* background-color: rgba(239, 239, 239,1); */
+    background-color: transparent;
+    border-left: 1px solid #dad6d6;
+    border-top: 1px solid #dad6d6;
+    border-bottom: 1px solid #dad6d6;
     /*; */
+}
+.searchbutton{
+    position: absolute;
+float: right;
+width: 30px;
+height: 40px;
+border-radius: 0px;
+margin-right: 25px;
+margin-top: 120px;
+/* background-color: red; */
+border-right: 1px solid #dad6d6;
+border-top: 1px solid #dad6d6;
+border-bottom: 1px solid #dad6d6;border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+
+}
+.searchbutton2{
+width: 30px;
+height: 40px;
+border-radius: 0px;
+margin-top: 130px;
+margin-left: -3px;
+/* background-color: red; */
+background-color: #EFEFEF;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+
 }
 .search-sub{
     /* background-color: red; */
    
     height: 200px;
+    margin-left: 40px;
     border-bottom: 1px solid #d7d5d5;
     
 }
+.search-sub2{
+    /* background-color: red; */
+    height: 72.5vh;
+}
+.result-profile img{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+    margin-left: 70px;
+}
+.result-profile{
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.result-profile:hover{
+    /* padding-top: ; */
+    background-color: rgb(215, 238, 246);
+}
+.result-profile h3{
+    font-size: clamp(15px,4vw,17px);
+    /* padding-top: 20px; */
+    margin-left: 130px;
+    font-weight: 600;
+   
+    
+}
+
+.search-sub2 span{
+    font-size: clamp(8px,4vw,12px);
+    padding-top: 0px;
+    margin-left: 130px;
+    font-weight: 300;
+}
 .search-sub2 h2{
     font-size: clamp(15px,4vw,17px);
+    padding-top: 20px;
+    margin-left: 60px;
+    font-weight: 600;
+   
+    
+}
+.search-sub3 h1{
+    position: absolute;
+    font-size: clamp(17px,4vw,25px);
+    margin-top: 80px;
+    font-weight: 600;
+}
+.search-sub3 input{
+    
+    margin-top: 130px;
+    background-color: rgba(239, 239, 239,1);
+    /*; */
+}
+.search-sub3{
+    /* background-color: red; */
+   display: flex;
+   justify-content: center;
+    height: 200px;
+    border-bottom: 1px solid #d7d5d5;
+    
+}
+.search-sub3sub h2{
+    font-size: clamp(15px,4vw,17px);
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 40px;
     font-weight: 600;
     
 }
