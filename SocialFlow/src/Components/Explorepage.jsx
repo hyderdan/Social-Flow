@@ -25,7 +25,8 @@ const Explorepage=()=>{
         Setsearchslide(!searchslide)
     }
     useEffect(()=>{
-       
+        fetchrecentdata();
+
     },[])
     const SearchUser=async(name)=>{
         try{
@@ -50,10 +51,22 @@ const Explorepage=()=>{
         try{
             const responce= await axios.post(`http://localhost:5000/users/recentdata/${userid}`,{profile_id})
                 console.log(responce.data);
+                fetchrecentdata();
         }catch(err){
                 console.log(err)
         }
     }
+    const fetchrecentdata=async()=>{
+            try{
+                const responce= await axios.get(`http://localhost:5000/users/fetchrecentdata/${userid}`);
+                console.log(responce.data);
+                const datas=responce.data
+                SetrecentData(datas.userdetails);
+            }catch(err){
+                console.log(err)
+            }
+    }
+    console.log("hh",recentData)
     const bURL="http://localhost:5000/upload"
     return(
         <div className="main-page ">
@@ -117,21 +130,19 @@ const Explorepage=()=>{
                      ))}
                  </div>:<div className="search-sub2">
                 <h2>Recent</h2>
-                {searchresult.map((data)=>(
+                {recentData.map((data)=>(
                   <div className="result-profile">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span>{data.bio}</span>
                     </div>
                      ))}
-            </div>} 
-               
-             
+            </div>}      
         </div>
         <div className={`flex ${searchslide ? '-translate-x-full  ' : 'translate-x-0'} hidden sm:hidden md:block lg:hidden w-4/6 h-full
          ml-16 border-r border-gray-300 flex-col rounded-r-3xl transition-transform duration-400`}>
             <div className="search-sub">
             <h1>Search</h1>
-            <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton lg:z-10" onClick={()=> SearchUser(searcheddat)}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton lg:z-10" >{!searchclose?<FontAwesomeIcon onClick={()=>closeandaddrecent()} icon={faXmark} />:<FontAwesomeIcon onClick={()=> SearchUser(searcheddat)} icon={faMagnifyingGlass} />}</button>
             </div>
             {searchtrue==false?<div className="search-sub2">
                   {searchresult.map((data)=>(
@@ -142,24 +153,36 @@ const Explorepage=()=>{
                      ))}
                  </div>:<div className="search-sub2">
                 <h2>Recent</h2>
-            </div>} 
+                {recentData.map((data)=>(
+                  <div className="result-profile">
+                    <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
+                    <span>{data.bio}</span>
+                    </div>
+                     ))}
+            </div>}
         </div>
         <div className={`flex ${searchslide ? '-translate-x-full  ' : 'translate-x-0'} w-full sm:block md:hidden lg:hidden sm:w-full h-full
          ml-0 border-r border-gray-300 flex-col  transition-transform duration-400`}>
             <div className="search-sub3">
             <h1>Search</h1>
-            <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton2 lg:z-10" onClick={()=> SearchUser(searcheddat)}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton2 lg:z-10" >{!searchclose?<FontAwesomeIcon onClick={()=>closeandaddrecent()} icon={faXmark} />:<FontAwesomeIcon onClick={()=> SearchUser(searcheddat)} icon={faMagnifyingGlass} />}</button>
             </div>
             {searchtrue==false?<div className="search-sub2">
                   {searchresult.map((data)=>(
-                  <div className="result-profile">
+                  <div className="result-profile2">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
-                    <span>{data.bio}</span>
+                    <span id="result-span" >{data.bio}</span>
                     </div>
                      ))}
-                 </div>:<div className="search-sub2">
+                 </div>:<div className="search-sub3">
                 <h2>Recent</h2>
-            </div>}  
+                {recentData.map((data)=>(
+                  <div className="result-profile2">
+                    <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
+                    <span id="result-span">{data.bio}</span>
+                    </div>
+                     ))}
+            </div>}
         </div>
         </>
         </div>
