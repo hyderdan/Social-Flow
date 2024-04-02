@@ -162,12 +162,16 @@ const Addusers = async (req, res) => {
                 console.log("cant't find user")
                 res.status(200).json({message:"user not found"})
             }
-            else{
-                user.recentprofileviewed.push(profile_id);
+            else if(user.recentprofileviewed.includes(profile_id)) {
+            console.log("user already viewed")
+            }
+                
+              else{
+                  user.recentprofileviewed.push(profile_id);
                 await user.save();
-                console.log(user)
+                console.log("profile added")
                 res.status(200).json({message:"recentprofile added"})
-
+              
             }
 
         }catch(err){
@@ -182,28 +186,16 @@ const Addusers = async (req, res) => {
           }
       
           // Extract product IDs from the user's cart
-          const productIds = user.recentprofileviewed.map(item => item.product);
-      
+        //   const userIds = user.recentprofileviewed.map(item => item.product);
+        // const reuser = await userdata.findById(req.params.userid)
           // Query productdata collection with the product IDs
-          const productsWithQuantity = await productdata.find({
-            _id: { $in: productIds }
+          const userdetails = await User.find({
+            _id: { $in: user.recentprofileviewed }
           });
       
-          // Combine product information with quantities from the user's cart
-          const products = user.cart.map(item => {
-            const product = productsWithQuantity.find(p => p._id.equals(item.product));
-            return {
-              ...item.toObject(),
-              product: product,
-              quantity: item.quantity
-            };
-          });
-          const totalquantity = user.cart.reduce((total, item) => {
-            return total + item.quantity
-          }, 0)
-      
+          console.log("new",userdetails);
           // Send response with cart items and quantities
-          res.status(200).json({ products, totalquantity });
+          res.status(200).json({ userdetails });
         } catch (error) {
           console.error("Error fetching cart quantity:", error);
           res.status(500).json({ error: "Server error", error: error.message });
@@ -211,5 +203,5 @@ const Addusers = async (req, res) => {
       };
 
   module.exports={
-    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed
+    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed,fetchrecentdata
   }
