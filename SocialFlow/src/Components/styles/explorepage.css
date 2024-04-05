@@ -4,6 +4,8 @@
     width: 100%;
     color: black;
     background-color: white;
+    display: flex;
+    flex-direction: row;
 }
 .side-bar{
     position: absolute;
@@ -301,6 +303,6 @@ border-bottom-right-radius: 5px;
     font-size: clamp(15px,4vw,17px);
     margin-top: 20px;
     margin-left: 20px;
-    font-weight: 600;
-    
+    font-weight: 600;   
 }
+

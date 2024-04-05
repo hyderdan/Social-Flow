@@ -5,6 +5,15 @@ const jwt=require("jsonwebtoken");
 const LOGIN_SECRET="f1u2rr";
 const fs=require("fs")
 
+const getuser=async(req,res)=>{
+    try{
+        const data = await User.find({});
+        res.status(200).send(data)
+      
+    }catch(err){
+        console.log(err);
+    }
+}
 const Addusers = async (req, res) => {
   try {
       const { userName, emAil, numbEr, date, pass, confirmPass } = req.body;
@@ -203,5 +212,5 @@ const Addusers = async (req, res) => {
       };
 
   module.exports={
-    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed,fetchrecentdata
+    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed,fetchrecentdata,getuser
   }

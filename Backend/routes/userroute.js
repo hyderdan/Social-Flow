@@ -9,6 +9,7 @@ userrouter.use(bodyParser.json());
 userrouter.use(bodyParser.urlencoded({extended:true}));
 userrouter.use(cookieParser());
 userrouter.post("/",userControllers.Addusers);
+userrouter.get("/",userControllers.getuser);
 userrouter.get("/searchdata/:name",userControllers.userdata);
 userrouter.post("/recentdata/:userid",userControllers.profileviewed);
 userrouter.get("/fetchrecentdata/:userid",userControllers.fetchrecentdata);

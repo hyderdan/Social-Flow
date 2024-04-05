@@ -13,11 +13,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Explore from './Components/Explore';
 import GetToken from './Components/storage/user-token';
 import Explorepage from './Components/Explorepage';
+import Userprofile from './Components/Userprofile';
 
 function App() {
   const [profile,setprofile]=useState(datas);
+  const[userid,Setuserid]=useState("")
   const passedDatas={
-    profile
+    profile,Setuserid,userid
   };
   const UserToken=GetToken();
 
@@ -34,7 +36,7 @@ function App() {
           <Route path='/signup' element={<Signup/>} />
           {UserToken&&<Route path='/explore' element={<Explore/>}/>}
           {UserToken&&<Route path='/explorepage' element={<Explorepage/>}/>}
-
+          {UserToken&&<Route path='/userprofile' element={<Userprofile/>}/>}
         </Routes>
         </mycontext.Provider>
         </BrowserRouter>

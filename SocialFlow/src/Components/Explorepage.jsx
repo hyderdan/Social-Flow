@@ -7,7 +7,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import UserId from "./storage/user-id";
+import Userprofile from "./Userprofile";
+import mycontext from "../Context.js/context";
+import { useContext } from "react";
 const Explorepage=()=>{
+    const{Setuserid}=useContext(mycontext);
     const userid=UserId();
     const[sidebarcolor,Setsidebarcolor]=useState('explore');
     const[searchslide,Setsearchslide]=useState(true);
@@ -48,11 +52,15 @@ const Explorepage=()=>{
            
     }
     const recentprofileview=async(profile_id)=>{
+        Setsearchslide(true);
+        closeandaddrecent();
+        viewprofile(profile_id);
         try{
             const responce= await axios.post(`http://localhost:5000/users/recentdata/${userid}`,{profile_id})
                 console.log(responce.data);
                 fetchrecentdata();
-        }catch(err){
+        }
+        catch(err){
                 console.log(err)
         }
     }
@@ -66,10 +74,16 @@ const Explorepage=()=>{
                 console.log(err)
             }
     }
-    console.log("hh",recentData)
+    const viewprofile=(id)=>{
+        Setuserid(id);
+
+    }
     const bURL="http://localhost:5000/upload"
     return(
         <div className="main-page ">
+            <div className="lg:z-0">
+        <Userprofile/>
+        </div>
             <>
         <div className="side-bar  hidden  sm:hidden md:hidden lg:block lg:z-10" >
         <Link to={"/home"} ><img  className="side-img"  src={icon} alt="img" /></Link>
@@ -115,7 +129,7 @@ const Explorepage=()=>{
         </>
         <>
         <div className={`flex ${searchslide ? '-translate-x-full  ' : 'translate-x-0'} hidden md:hidden lg:block w-3/6 h-full
-         ml-40 border-r border-gray-300 flex-col rounded-r-3xl transition-transform duration-400`}>
+         ml-40 border-r border-gray-300 flex-col rounded-r-3xl transition-transform duration-400 bg-white`}>
             <div className="search-sub">
             <h1>Search</h1>
             <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton lg:z-10" >{!searchclose?<FontAwesomeIcon onClick={()=>closeandaddrecent()} icon={faXmark} />:<FontAwesomeIcon onClick={()=> SearchUser(searcheddat)} icon={faMagnifyingGlass} />}</button>
@@ -123,10 +137,12 @@ const Explorepage=()=>{
            
                  {searchtrue==false?<div className="search-sub2">
                   {searchresult.map((data)=>(
+                //   <Link className="Hlink" to={`/userprofile/${data._id}`}>
                   <div onClick={()=>recentprofileview(data._id)} className="result-profile">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span>{data.bio}</span>
                     </div>
+                    // </Link>
                      ))}
                  </div>:<div className="search-sub2">
                 <h2>Recent</h2>
@@ -139,17 +155,19 @@ const Explorepage=()=>{
             </div>}      
         </div>
         <div className={`flex ${searchslide ? '-translate-x-full  ' : 'translate-x-0'} hidden sm:hidden md:block lg:hidden w-4/6 h-full
-         ml-16 border-r border-gray-300 flex-col rounded-r-3xl transition-transform duration-400`}>
+         ml-16 border-r border-gray-300 flex-col rounded-r-3xl transition-transform duration-400 bg-white`}>
             <div className="search-sub">
             <h1>Search</h1>
             <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton lg:z-10" >{!searchclose?<FontAwesomeIcon onClick={()=>closeandaddrecent()} icon={faXmark} />:<FontAwesomeIcon onClick={()=> SearchUser(searcheddat)} icon={faMagnifyingGlass} />}</button>
             </div>
             {searchtrue==false?<div className="search-sub2">
-                  {searchresult.map((data)=>(
-                  <div className="result-profile">
+            {searchresult.map((data)=>(
+                //   <Link className="Hlink" to={`/userprofile/${data._id}`}>
+                  <div onClick={()=>recentprofileview(data._id)} className="result-profile">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span>{data.bio}</span>
                     </div>
+                    // </Link>
                      ))}
                  </div>:<div className="search-sub2">
                 <h2>Recent</h2>
@@ -162,17 +180,19 @@ const Explorepage=()=>{
             </div>}
         </div>
         <div className={`flex ${searchslide ? '-translate-x-full  ' : 'translate-x-0'} w-full sm:block md:hidden lg:hidden sm:w-full h-full
-         ml-0 border-r border-gray-300 flex-col  transition-transform duration-400`}>
+         ml-0 border-r border-gray-300 flex-col  transition-transform duration-400 bg-white`}>
             <div className="search-sub3">
             <h1>Search</h1>
             <input value={searcheddat} onChange={(e)=>Setsearcheddata(e.target.value)} type="text" placeholder="search"  /> <button className="searchbutton2 lg:z-10" >{!searchclose?<FontAwesomeIcon onClick={()=>closeandaddrecent()} icon={faXmark} />:<FontAwesomeIcon onClick={()=> SearchUser(searcheddat)} icon={faMagnifyingGlass} />}</button>
             </div>
             {searchtrue==false?<div className="search-sub2">
-                  {searchresult.map((data)=>(
-                  <div className="result-profile2">
+            {searchresult.map((data)=>(
+                //   <Link className="Hlink" to={`/userprofile/${data._id}`}>
+                  <div onClick={()=>recentprofileview(data._id)} className="result-profile2">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span id="result-span" >{data.bio}</span>
                     </div>
+                    // </Link>
                      ))}
                  </div>:<div className="search-sub3">
                 <h2>Recent</h2>
@@ -185,6 +205,7 @@ const Explorepage=()=>{
             </div>}
         </div>
         </>
+        
         </div>
     )
 }
