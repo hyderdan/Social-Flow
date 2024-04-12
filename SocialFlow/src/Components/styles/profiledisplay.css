@@ -12,7 +12,7 @@
 .user-profile-main{
     position: relative;
     /* background-color: white; */
-    height: 40%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -24,7 +24,7 @@
 .user-profile-main2{
     position: relative;
     /* background-color: white; */
-    height: 40%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -52,7 +52,7 @@
 .user-profile-main3{
     position: relative;
     /* background-color: white; */
-    height: 40%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -82,6 +82,7 @@
     float: right;
     display: flex;
     flex-direction: column;
+    height: auto;
     /* margin-right: 200px; */
     margin-top: 70px;
     margin-left: 70px;
@@ -94,12 +95,13 @@
 }
 .user-content h2{
     /* margin-left: 200px; */
-    margin-bottom: 20px;
-    font-size: clamp(15px,4vw,20px);
+    margin-top: 30px;
+    font-size: clamp(15px,4vw,17px);
 }
 .user-content span{
     /* margin-left: 60px; */
-    margin-top: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     font-size: clamp(15px,4vw,17px);
 }
 .user-content3 h1{
@@ -109,18 +111,19 @@
 }
 .user-content3 h2{
     /* margin-left: 200px; */
-    margin-bottom: 20px;
-    font-size: clamp(15px,4vw,20px);
+    margin-top: 30px;
+    font-size: clamp(12px,4vw,17px);
 }
 .user-content3 span{
     /* margin-left: 60px; */
-    margin-top: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     font-size: clamp(15px,4vw,17px);
 }
 .buttons{
     /* position: absolute; */
     /* background-color: red; */
-    margin-left: -200px;
+    margin-left: -150px;
     margin-top: 43px;
     /* float: right; */
 }
@@ -144,7 +147,7 @@
 .buttons3{
     /* position: absolute; */
     /* background-color: red; */
-    margin-left: -200px;
+    margin-left: -160px;
     margin-top: 93px;
     /* float: right; */
 }
@@ -230,4 +233,30 @@
 }
 #similaruser{
     width: 50px;
+}
+.user-profile-main-xs ul{
+    position: absolute;
+    /* background-color: red; */
+    margin-top: 150px;
+    margin-left: 150px;
+    display: flex;
+    flex-direction: row;
+}
+.user-profile-main-xs li{
+    padding: 8px 8px 8px 8px;
+    font-size: clamp(15px,4vw,17px);
+    font-weight: 500;
+}
+.post-follow-follower ul{
+    /* position: absolute; */
+    /* background-color: red; */
+    margin-top: 20px;
+    margin-left: -10px;
+    display: flex;
+    flex-direction: row;
+}
+.post-follow-follower li{
+    padding: 8px 8px 8px 8px;
+    font-size: clamp(15px,4vw,20px);
+    font-weight: 500;
 }
