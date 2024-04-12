@@ -39,6 +39,13 @@ const Userprofile=()=>{
                     <img src={`${bURL}/${data.profile[0]}`} alt="" />
                     <div className="user-content">
                     <h1>{data.username}</h1>
+                    <div className="post-follow-follower">
+                    <ul>   
+                            <li>Post</li>
+                            <li>Follower</li>
+                            <li>Following</li>
+                        </ul>
+                    </div>  
                     <h2>{data.email}</h2>
                     <span>{data.bio}</span>
                     </div>
@@ -56,13 +63,20 @@ const Userprofile=()=>{
                 </div>
              
             </div>
-            <div className="profile-display  hidden lg:hidden  md:w-full md:ml-30"> 
+            <div className="profile-display  hidden lg:hidden md:block md:w-full md:ml-30"> 
                 <div className="user-profile-main2">
                 {userprofile.map((data)=>(
                     <>
                     <img src={`${bURL}/${data.profile[0]}`} alt="" />
                     <div className="user-content">
                     <h1>{data.username}</h1>
+                    <div className="post-follow-follower">
+                    <ul>   
+                            <li>Post</li>
+                            <li>Follower</li>
+                            <li>Following</li>
+                        </ul>
+                    </div>  
                     <h2>{data.email}</h2>
                     <span>{data.bio}</span>
                     </div>
@@ -80,13 +94,20 @@ const Userprofile=()=>{
                 </div>
              
             </div>
-            <div className="profile-display block  lg:hidden  sm:block sm:w-full md:hidden"> 
+            <div className="profile-display hidden  lg:hidden  sm:block sm:w-full md:hidden"> 
                 <div className="user-profile-main3">
                 {userprofile.map((data)=>(
                     <>
                     <img src={`${bURL}/${data.profile[0]}`} alt="" />
                     <div className="user-content3">
                     <h1>{data.username}</h1>
+                    <div className="post-follow-follower">
+                    <ul>   
+                            <li>Post</li>
+                            <li>Follower</li>
+                            <li>Following</li>
+                        </ul>
+                    </div>    
                     <h2>{data.email}</h2>
                     <span>{data.bio}</span>
                     </div>
@@ -101,6 +122,32 @@ const Userprofile=()=>{
                         </ul>
 
                     </div>
+                </div>
+             
+            </div>
+            <div className="profile-display block  lg:hidden  sm:hidden sm:w-full md:hidden"> 
+                <div className="user-profile-main-xs">
+                {userprofile.map((data)=>(
+                    <>
+                    <img src={`${bURL}/${data.profile[0]}`} alt="" />
+                    <ul>   
+                            <li>Post</li>
+                            <li>Follower</li>
+                            <li>Following</li>
+                        </ul>
+                    <div className="user-content-xs">
+                    <h1>{data.username}</h1>
+                    <h2>{data.email}</h2>
+                    <span>{data.bio}</span>
+                    </div>
+                    <div className="buttons-main-xs  flex flex-wrap justify-left  ">
+                        <button>following</button>
+                        <button>message</button>
+                        <button id="similaruser"><FontAwesomeIcon icon={faUser} /></button>
+                    </div>
+                    </>
+                    ))}
+                   
                 </div>
              
             </div>

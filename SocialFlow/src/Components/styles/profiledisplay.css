@@ -12,7 +12,7 @@
 .user-profile-main{
     position: relative;
     /* background-color: white; */
-    height: 40%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -24,7 +24,7 @@
 .user-profile-main2{
     position: relative;
     /* background-color: white; */
-    height: 40%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -52,7 +52,7 @@
 .user-profile-main3{
     position: relative;
     /* background-color: white; */
-    height: 40%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -82,6 +82,7 @@
     float: right;
     display: flex;
     flex-direction: column;
+    height: auto;
     /* margin-right: 200px; */
     margin-top: 70px;
     margin-left: 70px;
@@ -94,12 +95,13 @@
 }
 .user-content h2{
     /* margin-left: 200px; */
-    margin-bottom: 20px;
-    font-size: clamp(15px,4vw,20px);
+    margin-top: 30px;
+    font-size: clamp(15px,4vw,17px);
 }
 .user-content span{
     /* margin-left: 60px; */
-    margin-top: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     font-size: clamp(15px,4vw,17px);
 }
 .user-content3 h1{
@@ -109,18 +111,19 @@
 }
 .user-content3 h2{
     /* margin-left: 200px; */
-    margin-bottom: 20px;
-    font-size: clamp(15px,4vw,20px);
+    margin-top: 30px;
+    font-size: clamp(12px,4vw,17px);
 }
 .user-content3 span{
     /* margin-left: 60px; */
-    margin-top: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     font-size: clamp(15px,4vw,17px);
 }
 .buttons{
     /* position: absolute; */
     /* background-color: red; */
-    margin-left: -200px;
+    margin-left: -150px;
     margin-top: 43px;
     /* float: right; */
 }
@@ -132,7 +135,7 @@
     
 }
 .buttons li{
-    background-color: rgb(204, 204, 245);
+    background-color: rgb(236, 236, 237);
     margin-left: 20px;
     padding: 3px 5px 3px 5px ;
     border-radius: 8px;
@@ -144,7 +147,7 @@
 .buttons3{
     /* position: absolute; */
     /* background-color: red; */
-    margin-left: -200px;
+    margin-left: -160px;
     margin-top: 93px;
     /* float: right; */
 }
@@ -156,7 +159,7 @@
     
 }
 .buttons3 li{
-    background-color: rgb(204, 204, 245);
+    background-color: rgb(236, 236, 237);
     margin-left: 20px;
     padding: 3px 5px 3px 5px ;
     border-radius: 8px;
@@ -164,4 +167,96 @@
 }
 .buttons3 li:hover{
     background-color: rgb(140, 140, 235);
+}
+.user-profile-main-xs{
+    position: relative;
+    /* background-color: black; */
+    height: auto;
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 00px;
+    justify-content: left;
+    border-bottom: 1px solid #b6b2b2;
+    
+}
+.user-profile-main-xs img{
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: 90px;
+    margin-left: 30px;
+}
+.user-content-xs{
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    width: 100vh;
+    height: auto;
+    padding-left: 40px;
+    /* background-color: blue; */
+}
+
+.user-content-xs h1{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: clamp(17px,4vw,25px);
+}
+.user-content-xs h2{
+    /* margin-left: 200px; */
+    margin-bottom: 20px;
+    font-size: clamp(15px,4vw,20px);
+}
+.user-content-xs span{
+    /* margin-left: 60px; */
+    margin-top: 0px;
+    font-size: clamp(15px,4vw,17px);
+}
+.buttons-main-xs{
+    
+    margin-top: 30px;
+    margin-bottom: 20px;
+   
+}
+
+.buttons-main-xs button{
+    background-color: rgb(236, 236, 237);
+    margin-left: 20px;
+    border-radius: 8px;
+    transition: 0.4s;
+    width: 150px;
+    height: 30px;
+}
+.buttons-xs button:hover{
+    background-color: rgb(199, 199, 248);
+}
+#similaruser{
+    width: 50px;
+}
+.user-profile-main-xs ul{
+    position: absolute;
+    /* background-color: red; */
+    margin-top: 150px;
+    margin-left: 150px;
+    display: flex;
+    flex-direction: row;
+}
+.user-profile-main-xs li{
+    padding: 8px 8px 8px 8px;
+    font-size: clamp(15px,4vw,17px);
+    font-weight: 500;
+}
+.post-follow-follower ul{
+    /* position: absolute; */
+    /* background-color: red; */
+    margin-top: 20px;
+    margin-left: -10px;
+    display: flex;
+    flex-direction: row;
+}
+.post-follow-follower li{
+    padding: 8px 8px 8px 8px;
+    font-size: clamp(15px,4vw,20px);
+    font-weight: 500;
 }
