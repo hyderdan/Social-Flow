@@ -11,6 +11,7 @@ userrouter.use(cookieParser());
 userrouter.post("/",userControllers.Addusers);
 userrouter.get("/",userControllers.getuser);
 userrouter.get("/searchdata/:name",userControllers.userdata);
+userrouter.post("/followed",userControllers.addfollowers);
 userrouter.post("/recentdata/:userid",userControllers.profileviewed);
 userrouter.get("/fetchrecentdata/:userid",userControllers.fetchrecentdata);
 userrouter.post("/login",userControllers.loginuser);

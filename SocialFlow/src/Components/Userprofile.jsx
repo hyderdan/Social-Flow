@@ -7,10 +7,13 @@ import mycontext from "../Context.js/context";
 import{FontAwesomeIcon}from "@fortawesome/react-fontawesome"
 import{faUser,faEllipsis}from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
+import UserId from "./storage/user-id";
 
 const Userprofile=()=>{
     const{userid}=useContext(mycontext)
     const[data,Setdata]=useState([]);
+    const Userid= UserId();
+    const [togglefollowbutton,Settogglefollowbuttton]=useState(true);
     // const{id}=useParams();
     useEffect(()=>{
         fetchdata();
@@ -27,6 +30,21 @@ const Userprofile=()=>{
     const userprofile= data.filter((data)=>
         data._id==userid
     );
+    const followreq=async(followerid)=>{
+        if(togglefollowbutton==true){
+         Settogglefollowbuttton(!togglefollowbutton)
+        try{
+            const responce=await axios.post("http://localhost:5000/users/followed",{followerid,Userid});
+            console.log(responce);
+        }catch(err){
+            console.log(err);
+        }
+         }
+        else{
+            Settogglefollowbuttton(true)
+        }
+
+    }
     const bURL="http://localhost:5000/upload"
 
     return(
@@ -49,17 +67,16 @@ const Userprofile=()=>{
                     <h2>{data.email}</h2>
                     <span>{data.bio}</span>
                     </div>
-                    </>
-                    ))}
                     <div className="buttons">
                         <ul>
-                          <li><button>following</button></li>
+                          <li><button onClick={()=>followreq(data._id)}>{togglefollowbutton==true?"follow":"following"}</button></li>
                           <li><button>message</button></li>
                           <li><button><FontAwesomeIcon icon={faUser} /></button></li>
                           <li><FontAwesomeIcon icon={faEllipsis} /></li>  
                         </ul>
-
                     </div>
+                    </>
+                    ))}
                 </div>
              
             </div>
@@ -80,8 +97,6 @@ const Userprofile=()=>{
                     <h2>{data.email}</h2>
                     <span>{data.bio}</span>
                     </div>
-                    </>
-                    ))}
                     <div className="buttons">
                         <ul>
                           <li><button>following</button></li>
@@ -89,8 +104,9 @@ const Userprofile=()=>{
                           <li><button><FontAwesomeIcon icon={faUser} /></button></li>
                           <li><FontAwesomeIcon icon={faEllipsis} /></li>  
                         </ul>
-
                     </div>
+                    </>
+                    ))}
                 </div>
              
             </div>
@@ -111,8 +127,6 @@ const Userprofile=()=>{
                     <h2>{data.email}</h2>
                     <span>{data.bio}</span>
                     </div>
-                    </>
-                    ))}
                     <div className="buttons3">
                         <ul>
                           <li><button>following</button></li>
@@ -120,8 +134,9 @@ const Userprofile=()=>{
                           <li><button><FontAwesomeIcon icon={faUser} /></button></li>
                           <li><FontAwesomeIcon icon={faEllipsis} /></li>  
                         </ul>
-
                     </div>
+                    </>
+                    ))}
                 </div>
              
             </div>
@@ -147,7 +162,7 @@ const Userprofile=()=>{
                     </div>
                     </>
                     ))}
-                   
+                    
                 </div>
              
             </div>

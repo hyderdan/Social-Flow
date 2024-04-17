@@ -210,7 +210,25 @@ const Addusers = async (req, res) => {
           res.status(500).json({ error: "Server error", error: error.message });
         }
       };
-
+      const addfollowers= async(req,res)=>{
+        try{
+                const{Userid,followerid}=req.body;
+                const user= await User.findById(Userid);
+                if(!user){
+                    console.log("user not exist");
+                }
+                else{
+                    user.following.push(followerid);
+                    await user.save();
+                    console.log("followed")
+                    res.status(200).json({message:"recentprofile added"})
+     
+                }
+        }catch(err){
+            console.log(err)
+        }
+      }
   module.exports={
-    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed,fetchrecentdata,getuser
+    Addusers,loginuser,userdetails,updateuser,profileupload,getprofile,userdata,profileviewed,fetchrecentdata,getuser,
+    addfollowers
   }
