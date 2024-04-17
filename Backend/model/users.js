@@ -4,6 +4,12 @@ const userschema=new mongoose.Schema({
     profile:[
       
     ],
+    followers:[
+
+    ],
+    following:[
+        
+    ],
     bio:String,
     username:String,
     email:String,

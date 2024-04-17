@@ -20,9 +20,11 @@ const Explorepage=()=>{
     const[searchtrue,Setsearchtrue]=useState(true);
     const[searchclose,Setsearchclose]=useState(true);
     const[recentData,SetrecentData]=useState([]);
+    const[toggleProfileuser,SettoggleProfileuser]=useState(true);
     const Togglesidebar=(sidename)=>{
                 Setsidebarcolor(sidename);
-                Setsearchslide(true)
+                Setsearchslide(true);
+                SettoggleProfileuser(true);
     }
     const togglesearch=(sidename)=>{
         Setsidebarcolor(sidename);
@@ -52,9 +54,12 @@ const Explorepage=()=>{
            
     }
     const recentprofileview=async(profile_id)=>{
-        Setsearchslide(true);
-        closeandaddrecent();
-        viewprofile(profile_id);
+        
+            Setsearchslide(true);
+            SettoggleProfileuser(false);
+            closeandaddrecent();
+            viewprofile(profile_id);
+       
         try{
             const responce= await axios.post(`http://localhost:5000/users/recentdata/${userid}`,{profile_id})
                 console.log(responce.data);
@@ -82,7 +87,9 @@ const Explorepage=()=>{
     return(
         <div className="main-page ">
             <div className="lg:z-0">
-        <Userprofile/>
+                {toggleProfileuser==false ?
+        <Userprofile/>: <div></div>
+                }
         </div>
             <>
         <div className="side-bar  hidden  sm:hidden md:hidden lg:block lg:z-10" >
@@ -147,7 +154,7 @@ const Explorepage=()=>{
                  </div>:<div className="search-sub2">
                 <h2>Recent</h2>
                 {recentData.map((data)=>(
-                  <div className="result-profile">
+                  <div  onClick={()=>recentprofileview(data._id)} className="result-profile">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span>{data.bio}</span>
                     </div>
@@ -172,7 +179,7 @@ const Explorepage=()=>{
                  </div>:<div className="search-sub2">
                 <h2>Recent</h2>
                 {recentData.map((data)=>(
-                  <div className="result-profile">
+                  <div  onClick={()=>recentprofileview(data._id)} className="result-profile">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span>{data.bio}</span>
                     </div>
@@ -197,7 +204,7 @@ const Explorepage=()=>{
                  </div>:<div className="search-sub3">
                 <h2>Recent</h2>
                 {recentData.map((data)=>(
-                  <div className="result-profile2">
+                  <div  onClick={()=>recentprofileview(data._id)} className="result-profile2">
                     <img src={`${bURL}/${data.profile[0]}`} alt="" /><h3>{data.username}</h3>
                     <span id="result-span">{data.bio}</span>
                     </div>
