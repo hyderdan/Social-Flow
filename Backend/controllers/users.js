@@ -217,6 +217,9 @@ const Addusers = async (req, res) => {
                 if(!user){
                     console.log("user not exist");
                 }
+                else if(user.following.includes(followerid)) {
+                    console.log("user already viewed")
+                    }
                 else{
                     user.following.push(followerid);
                     await user.save();
@@ -226,6 +229,13 @@ const Addusers = async (req, res) => {
                 }
         }catch(err){
             console.log(err)
+        }
+      }
+      const getfollowing=async(req,res)=>{
+        try{
+            
+        }catch(err){
+            console.log(err);
         }
       }
   module.exports={

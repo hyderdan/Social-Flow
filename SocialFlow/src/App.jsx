@@ -14,6 +14,7 @@ import Explore from './Components/Explore';
 import GetToken from './Components/storage/user-token';
 import Explorepage from './Components/Explorepage';
 import Userprofile from './Components/Userprofile';
+import Profile from './Components/Profile';
 
 function App() {
   const [profile,setprofile]=useState(datas);
@@ -37,6 +38,7 @@ function App() {
           {UserToken&&<Route path='/explore' element={<Explore/>}/>}
           {UserToken&&<Route path='/explorepage' element={<Explorepage/>}/>}
           {UserToken&&<Route path='/userprofile' element={<Userprofile/>}/>}
+          {UserToken&&<Route path='/profile' element={<Profile/>}/>}
         </Routes>
         </mycontext.Provider>
         </BrowserRouter>
