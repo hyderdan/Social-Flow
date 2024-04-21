@@ -1,16 +1,77 @@
 .profile-datail-L{
     position: absolute;
-    background-color: red;
     width: 100%;
     height: 100%;
     display:  flex;
     justify-content: center;
 }
-.userprofile{
+.userprofile-L{
     position: absolute;
-    background-color: blue;
-    width: 80%;
-    height: auto;
-    margin-left: 215px;
-    margin-top: 50px;
+    /* background-color: blue; */
+    width: 100%;
+    height: 350px;
+    display: flex;
+    margin-left: 420px;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+}
+.userprofilepic-L{
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 100px;
+}
+.userprofile-L h1{
+    margin-left: 80px;
+    margin-top: 40px;
+    font-size: clamp(17px,4vw,25px);
+    font-weight: 600;
+
+}
+.userprofile-L ul{
+    margin-left: 20px;
+    margin-top: 28px;
+    display: flex;   /* background-color: red; */
+    
+}
+.userprofile-L li{
+    padding: 15px 15px;    
+} 
+.userprofile-L button{
+    background-color:#EFEFEF;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.userprofile-L-list2 ul{
+    position: absolute;
+    margin-top: 90px;
+    margin-left: -345px;
+    display: flex;  
+     /* background-color: red; */
+    
+}
+.userprofile-L-list2 li{
+    padding: 10px 28px;   
+    font-size: clamp(17px,4vw,20px);
+ 
+} 
+.userprofile-L p{
+    /* position: absolute; */
+    margin-left:-318px;
+    margin-top: 140px;
+    font-size: clamp(12px,4vw,15px);
+    font-weight: 500;
+
+}
+.highlight-L{
+    border-radius: 50%;
+    border: 1px solid #b4b1b1;
+    width: 80px;
+    height: 80px;
+    margin-top: 260px;
+    margin-right: 430px;
 }
