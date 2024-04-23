@@ -270,24 +270,25 @@
 }
 .userprofile-xsm{
     /* position: absolute; */
-    /* background-color: blue; */
+    background-color: blue;
     width: 100%;
     height: 350px;
-    display: flex;
-    justify-content: left;
+     /* display: flex; */
+    /* flex-direction: row;
+    justify-content: center;  */
     margin-top: 70px;
     border-bottom: 1px solid #d8d3d3;
 }
 .userprofilepic-xsm{
     border-radius: 50%;
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
     margin-top: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    /* margin-left: 140px; */
+    margin-left: 0px;
 }
 .userprofile-xsm h1{
     margin-left: 80px;
@@ -296,38 +297,45 @@
     font-weight: 600;
 
 }
-.userprofile-xsm ul{
-   height: 50px;
-    margin-top: 230px;
+.userprofile-button-xsm{
+    /* position: absolute; */
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
     display: flex; 
+    justify-content: center;
     flex-wrap: nowrap;
       /* background-color: red; */
-      margin-left: -290px;
+      margin-left: -20px;
     
 }
-.userprofile-xsm li{
-    padding: 15px 15px;   
-    font-size: clamp(8px,4vw,10px); 
-} 
-.userprofile-xsm button{
-    
+
+.userprofile-button-xsm button{
+    margin-left: 20px;
     background-color:#EFEFEF;
     border-radius: 5px;
     padding: 5px 10px;
-    width: 250px;
+    width: 230px;
+    height: 30px;
 
 }
+.userprofile-xsm-list2 {
+background-color: red;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
 .userprofile-xsm-list2 ul{
-    position: absolute;
-    margin-top: 90px;
-    margin-left: -345px;
+    /* position: absolute; */
+    margin-top: -170px;
+    margin-left: 30px;
     display: flex;  
      /* background-color: red; */
     
 }
 .userprofile-xsm-list2 li{
-    padding: 10px 28px;   
-    font-size: clamp(17px,4vw,20px);
+    margin-left: 40px;
+    font-size: clamp(10px,4vw,15px);
  
 } 
 .userprofile-xsm p{

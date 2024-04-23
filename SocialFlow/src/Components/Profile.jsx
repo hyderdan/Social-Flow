@@ -91,10 +91,10 @@ const Profile=()=>{
             <div className="userprofile-xsm" >
             <img className='userprofilepic-xsm'src={`${bURL}/${profiledata[0]}`} alt="img" />
             <h1>{profiledata2.username}</h1>
-            <ul>
-                <li><button>Edit profile</button></li>
-                <li><button>Archive</button></li>
-            </ul>
+            <div className="userprofile-button-xsm">
+                <button>Edit profile</button>
+               <button>Archive</button>
+            </div>
             <div className="userprofile-xsm-list2">
             <ul>
                 <li>Posts</li>
@@ -102,9 +102,9 @@ const Profile=()=>{
                 <li>Following</li>
             </ul>
             </div> 
-            <p>{profiledata2.bio}</p>  
+            {/* <p>{profiledata2.bio}</p>   */}
             </div>
-            <div className="highlight-xsm lg:hidden md:hidden sm:hidden block"><h1>+</h1></div>
+            {/* <div className="highlight-xsm lg:hidden md:hidden sm:hidden block"><h1>+</h1></div> */}
             </div>
             </>
         </div>
