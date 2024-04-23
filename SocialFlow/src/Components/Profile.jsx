@@ -26,7 +26,8 @@ const Profile=()=>{
     return(
         <div className="Profile-mainpage w-full flex flex-wrap justify-center bg-red-400">
             <Explorepage/>
-            <div className="profile-datail-L">
+            <>
+            <div className="profile-datail-L lg:block hidden">
             <div className="userprofile-L" >
             <img className='userprofilepic-L'src={`${bURL}/${profiledata[0]}`} alt="img" />
             <h1>{profiledata2.username}</h1>
@@ -43,9 +44,69 @@ const Profile=()=>{
             </div> 
             <p>{profiledata2.bio}</p>  
             </div>
-            <div className="highlight-L">+</div>
+            <div className="highlight-L lg:block hidden"><h1>+</h1></div>
             </div>
-        
+
+            <div className="profile-datail-md lg:hidden md:block hidden">
+            <div className="userprofile-md" >
+            <img className='userprofilepic-md'src={`${bURL}/${profiledata[0]}`} alt="img" />
+            <h1>{profiledata2.username}</h1>
+            <ul>
+                <li><button>Edit profile</button></li>
+                <li><button>Archive</button></li>
+            </ul>
+            <div className="userprofile-md-list2">
+            <ul>
+                <li>Posts</li>
+                <li>Followers</li>
+                <li>Following</li>
+            </ul>
+            </div> 
+            <p>{profiledata2.bio}</p>  
+            </div>
+            <div className="highlight-md lg:hidden md:block hidden"><h1>+</h1></div>
+            </div>
+
+            <div className="profile-datail-sm lg:hidden md:hidden sm:block hidden">
+            <div className="userprofile-sm" >
+            <img className='userprofilepic-sm'src={`${bURL}/${profiledata[0]}`} alt="img" />
+            <h1>{profiledata2.username}</h1>
+            <ul>
+                <li><button>Edit profile</button></li>
+                <li><button>Archive</button></li>
+            </ul>
+            <div className="userprofile-sm-list2">
+            <ul>
+                <li>Posts</li>
+                <li>Followers</li>
+                <li>Following</li>
+            </ul>
+            </div> 
+            <p>{profiledata2.bio}</p>  
+            </div>
+            <div className="highlight-sm lg:hidden md:hidden sm:block hidden"><h1>+</h1></div>
+            </div>
+
+            <div className="profile-datail-xsm lg:hidden md:hidden sm:hidden block">
+            <div className="userprofile-xsm" >
+            <img className='userprofilepic-xsm'src={`${bURL}/${profiledata[0]}`} alt="img" />
+            <h1>{profiledata2.username}</h1>
+            <div className="userprofile-button-xsm">
+                <button>Edit profile</button>
+               <button>Archive</button>
+            </div>
+            <div className="userprofile-xsm-list2">
+            <ul>
+                <li>Posts</li>
+                <li>Followers</li>
+                <li>Following</li>
+            </ul>
+            </div> 
+            {/* <p>{profiledata2.bio}</p>   */}
+            </div>
+            {/* <div className="highlight-xsm lg:hidden md:hidden sm:hidden block"><h1>+</h1></div> */}
+            </div>
+            </>
         </div>
     )
 }

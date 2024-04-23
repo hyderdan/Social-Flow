@@ -1,3 +1,4 @@
+/* display:large starts*/
 .profile-datail-L{
     position: absolute;
     width: 100%;
@@ -11,7 +12,6 @@
     width: 100%;
     height: 350px;
     display: flex;
-    margin-left: 420px;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
 }
@@ -23,7 +23,7 @@
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 100px;
+    margin-left: 300px;
 }
 .userprofile-L h1{
     margin-left: 80px;
@@ -68,10 +68,297 @@
 
 }
 .highlight-L{
+    position: absolute;
     border-radius: 50%;
     border: 1px solid #b4b1b1;
     width: 80px;
     height: 80px;
     margin-top: 260px;
-    margin-right: 430px;
+    margin-left: 350px;
+}
+.highlight-L h1{
+    margin-top: -35px;
+    margin-left: 11px;
+    font-size: 100px;
+    font-weight: 100;
+    color: lightgray;
+}
+/* display:large ends*/
+
+
+/* display:medium starts*/
+.profile-datail-md{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display:  flex;
+    justify-content: center;
+}
+.userprofile-md{
+    position: absolute;
+    /* background-color: blue; */
+    width: 100%;
+    height: 350px;
+    display: flex;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+}
+.userprofilepic-md{
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 140px;
+}
+.userprofile-md h1{
+    margin-left: 80px;
+    margin-top: 40px;
+    font-size: clamp(17px,4vw,25px);
+    font-weight: 600;
+
+}
+.userprofile-md ul{
+    margin-left: 20px;
+    margin-top: 28px;
+    display: flex;   /* background-color: red; */
+    
+}
+.userprofile-md li{
+    padding: 15px 15px;    
+} 
+.userprofile-md button{
+    background-color:#EFEFEF;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.userprofile-md-list2 ul{
+    position: absolute;
+    margin-top: 90px;
+    margin-left: -345px;
+    display: flex;  
+     /* background-color: red; */
+    
+}
+.userprofile-md-list2 li{
+    padding: 10px 28px;   
+    font-size: clamp(17px,4vw,20px);
+ 
+} 
+.userprofile-md p{
+    /* position: absolute; */
+    margin-left:-318px;
+    margin-top: 140px;
+    font-size: clamp(12px,4vw,15px);
+    font-weight: 500;
+
+}
+.highlight-md{
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #b4b1b1;
+    width: 80px;
+    height: 80px;
+    margin-top: 260px;
+    margin-left: 200px;
+}
+.highlight-md h1{
+    margin-top: -35px;
+    margin-left: 11px;
+    font-size: 100px;
+    font-weight: 100;
+    color: lightgray;
+}
+/* display:medium ends*/
+
+/* display:small starts*/
+.profile-datail-sm{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display:  flex;
+    justify-content: center;
+}
+.userprofile-sm{
+    position: absolute;
+    /* background-color: blue; */
+    width: 100%;
+    height: 350px;
+    display: flex;
+    margin-top: 70px;
+    border-bottom: 1px solid #d8d3d3;
+}
+.userprofilepic-sm{
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* margin-left: 140px; */
+}
+.userprofile-sm h1{
+    margin-left: 80px;
+    margin-top: 40px;
+    font-size: clamp(17px,4vw,25px);
+    font-weight: 600;
+
+}
+.userprofile-sm ul{
+    margin-left: 20px;
+    margin-top: 28px;
+    display: flex;   /* background-color: red; */
+    
+}
+.userprofile-sm li{
+    padding: 15px 15px;    
+} 
+.userprofile-sm button{
+    background-color:#EFEFEF;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.userprofile-sm-list2 ul{
+    position: absolute;
+    margin-top: 90px;
+    margin-left: -345px;
+    display: flex;  
+     /* background-color: red; */
+    
+}
+.userprofile-sm-list2 li{
+    padding: 10px 28px;   
+    font-size: clamp(17px,4vw,20px);
+ 
+} 
+.userprofile-sm p{
+    /* position: absolute; */
+    margin-left:-318px;
+    margin-top: 140px;
+    font-size: clamp(12px,4vw,15px);
+    font-weight: 500;
+
+}
+.highlight-sm{
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #b4b1b1;
+    width: 80px;
+    height: 80px;
+    margin-top: 320px;
+    margin-left: 70px;
+}
+.highlight-sm h1{
+    margin-top: -35px;
+    margin-left: 11px;
+    font-size: 100px;
+    font-weight: 100;
+    color: lightgray;
+}
+/* display:small ends*/
+
+
+.profile-datail-xsm{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display:  flex;
+    justify-content: center;
+}
+.userprofile-xsm{
+    /* position: absolute; */
+    background-color: blue;
+    width: 100%;
+    height: 350px;
+     /* display: flex; */
+    /* flex-direction: row;
+    justify-content: center;  */
+    margin-top: 70px;
+    border-bottom: 1px solid #d8d3d3;
+}
+.userprofilepic-xsm{
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 0px;
+}
+.userprofile-xsm h1{
+    margin-left: 80px;
+    margin-top: 40px;
+    font-size: clamp(17px,4vw,25px);
+    font-weight: 600;
+
+}
+.userprofile-button-xsm{
+    /* position: absolute; */
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    display: flex; 
+    justify-content: center;
+    flex-wrap: nowrap;
+      /* background-color: red; */
+      margin-left: -20px;
+    
+}
+
+.userprofile-button-xsm button{
+    margin-left: 20px;
+    background-color:#EFEFEF;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 230px;
+    height: 30px;
+
+}
+.userprofile-xsm-list2 {
+background-color: red;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.userprofile-xsm-list2 ul{
+    /* position: absolute; */
+    margin-top: -170px;
+    margin-left: 30px;
+    display: flex;  
+     /* background-color: red; */
+    
+}
+.userprofile-xsm-list2 li{
+    margin-left: 40px;
+    font-size: clamp(10px,4vw,15px);
+ 
+} 
+.userprofile-xsm p{
+    /* position: absolute; */
+    margin-left:-318px;
+    margin-top: 140px;
+    font-size: clamp(12px,4vw,15px);
+    font-weight: 500;
+
+}
+.highlight-xsm{
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #b4b1b1;
+    width: 80px;
+    height: 80px;
+    margin-top: 320px;
+    margin-left: 70px;
+}
+.highlight-xsm h1{
+    margin-top: -35px;
+    margin-left: 11px;
+    font-size: 100px;
+    font-weight: 100;
+    color: lightgray;
 }
